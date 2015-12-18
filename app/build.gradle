@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.replay.demo"
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -25,6 +25,6 @@ dependencies {
 
 //    compile 'com.replay:android-sdk:0.0.2@aar'
     compile(name:'app-release', ext:'aar')
-    compile 'com.google.android.gms:play-services-ads:+'
+    compile 'com.google.android.gms:play-services-ads:8.3.0'
 
 }
