@@ -1,0 +1,30 @@
+apply plugin: 'com.android.application'
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.replay.demo"
+        minSdkVersion 23
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:leanback-v17:23.1.1'
+
+//    compile 'com.replay:android-sdk:0.0.2@aar'
+    compile(name:'app-release', ext:'aar')
+    compile 'com.google.android.gms:play-services-ads:+'
+
+}
