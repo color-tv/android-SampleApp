@@ -9,7 +9,6 @@ import android.widget.Toast;
 import com.replay.android.AdPlacement;
 import com.replay.android.AdType;
 import com.replay.android.OnCurrencyEarnedListener;
-import com.replay.android.ReplayInternals;
 import com.replay.android.ReplaySdk;
 
 public class MainActivity extends Activity {
