@@ -11,7 +11,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/demo_app_icon"
+        android:icon="@drawable/demo_app_icon"
         android:banner="@drawable/demo_app_banner"
         android:label="@string/app_name"
         android:supportsRtl="true"
