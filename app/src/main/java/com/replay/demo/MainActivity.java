@@ -18,6 +18,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ReplaySdk.setDebugMode(true);
         ReplaySdk.init(this, "566dbcc3326aeb750132fdfa");
         ReplaySdk.addOnCurrencyEarnedListener(new OnCurrencyEarnedListener() {
             @Override
@@ -29,7 +30,7 @@ public class MainActivity extends Activity {
         findViewById(R.id.btnDiscoveryCenter).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReplaySdk.showAd(AdType.APP_WALL, AdPlacement.APP_LAUNCH);
+                ReplaySdk.showAd(AdType.APP_WALL, AdPlacement.BETWEEN_LEVELS);
             }
         });
 
