@@ -24,13 +24,13 @@ android {
 dependencies {
     compile 'com.android.support:leanback-v17:23.1.1'
 
-//    compile 'com.replay:android-sdk:0.0.2@aar'
     compile(name:'app-release', ext:'aar')
     compile 'com.google.android.gms:play-services-ads:8.4.0'
 
-//    apt 'com.google.dagger:dagger-compiler:2.0'
     compile ('com.google.dagger:dagger:2.0') {
         exclude group: 'javax.inject'
     }
-//    provided 'javax.annotation:jsr250-api:1.0'
+    apt ('com.google.dagger:dagger-compiler:2.0')
+    provided 'javax.annotation:jsr250-api:1.0'
+
 }

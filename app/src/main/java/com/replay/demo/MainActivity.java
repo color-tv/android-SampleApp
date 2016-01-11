@@ -1,15 +1,16 @@
 package com.replay.demo;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.replay.android.AdPlacement;
 import com.replay.android.AdType;
 import com.replay.android.OnCurrencyEarnedListener;
 import com.replay.android.ReplaySdk;
+import com.replay.android.dagger.DaggerReplaySdkComponent;
+import com.replay.android.dagger.ReplaySdkModule;
 
 public class MainActivity extends Activity {
 
@@ -47,6 +48,11 @@ public class MainActivity extends Activity {
                 ReplaySdk.showAd(AdType.FULLSCREEN, AdPlacement.LEVEL_UP);
             }
         });
+
+        DaggerTestComponent.builder()
+                .testModule(new TestModule(this))
+                .build();
+//        new TestComponent().inject();
     }
 
     @Override
