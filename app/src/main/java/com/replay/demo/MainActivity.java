@@ -31,27 +31,28 @@ public class MainActivity extends Activity {
         findViewById(R.id.btnDiscoveryCenter).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReplaySdk.showAd(AdType.APP_WALL, AdPlacement.BETWEEN_LEVELS);
+                ReplaySdk.showAd("TestAppWall");
             }
         });
 
         findViewById(R.id.btnInterstitial).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReplaySdk.showAd(AdType.INTERSTITIAL, AdPlacement.APP_RESUME);
+                ReplaySdk.showAd("TestInterstitial");
             }
         });
 
         findViewById(R.id.btnFullscreen).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReplaySdk.showAd(AdType.FULLSCREEN, AdPlacement.LEVEL_UP);
+                ReplaySdk.showAd("TestFullScreen");
             }
         });
 
         DaggerTestComponent.builder()
                 .testModule(new TestModule(this))
                 .build();
+
 //        new TestComponent().inject();
     }
 
