@@ -27,21 +27,21 @@ public class MainActivity extends Activity {
         findViewById(R.id.btnDiscoveryCenter).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReplaySdk.showAd("TestAppWall");
+                ReplaySdk.showAd("DemoAppWall");
             }
         });
 
         findViewById(R.id.btnInterstitial).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReplaySdk.showAd("TestInterstitial");
+                ReplaySdk.showAd("DemoInterstitial");
             }
         });
 
         findViewById(R.id.btnFullscreen).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReplaySdk.showAd("TestFullScreen");
+                ReplaySdk.showAd("DemoFullScreen");
             }
         });
 
