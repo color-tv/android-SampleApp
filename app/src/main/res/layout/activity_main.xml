@@ -22,7 +22,7 @@
         android:layout_height="120px"
         android:layout_margin="@dimen/btn_margin"
 
-        android:text="Interstitial"/>
+        android:text="Engagement"/>
 
     <Button
         android:id="@+id/btnFullscreen"
