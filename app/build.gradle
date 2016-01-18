@@ -13,10 +13,16 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    signingConfigs {
+        release
+    }
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            zipAlignEnabled true
         }
     }
 }
@@ -32,5 +38,11 @@ dependencies {
     }
     apt ('com.google.dagger:dagger-compiler:2.0')
     provided 'javax.annotation:jsr250-api:1.0'
-
 }
+
+def props = new Properties()
+props.load(new FileInputStream(rootProject.file("keystores/replay_demo_release.properties")))
+android.signingConfigs.release.storeFile rootProject.file(props.storeFile)
+android.signingConfigs.release.storePassword props.storePassword
+android.signingConfigs.release.keyAlias props.keyAlias
+android.signingConfigs.release.keyPassword props.keyPassword
