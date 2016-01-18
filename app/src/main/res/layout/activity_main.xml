@@ -22,13 +22,13 @@
         android:layout_height="120px"
         android:layout_margin="@dimen/btn_margin"
 
-        android:text="Engagement"/>
+        android:text="Interstitial"/>
 
     <Button
         android:id="@+id/btnFullscreen"
         android:layout_width="400px"
         android:layout_height="120px"
         android:layout_margin="@dimen/btn_margin"
-        android:text="Fullscreen"/>
+        android:text="Engagement"/>
 
 </LinearLayout>
