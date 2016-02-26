@@ -12,23 +12,16 @@ import com.colortv.android.ColorTvError;
 import com.colortv.android.ColorTvSdk;
 import com.colortv.android.OnCurrencyEarnedListener;
 
+import java.util.Random;
+
 public class MainActivity extends Activity {
 
-    public static final String DISCOVERY_CENTER_PLACEMENT = "DemoAppWall";
-    public static final String INTERSTITIAL_PLACEMENT = "DemoInterstitial";
-    public static final String ENGAGEMENT_PLACEMENT = "DemoFullScreen";
-    public static final String VIDEO_PLACEMENT = "DemoVideo";
-
-    private Button showDiscoveryCenterButton;
-    private Button showInterstitialButton;
-    private Button showEngagementButton;
-    private Button showVideoButton;
 
     private ColorTvAdListener loadAdListener = new ColorTvAdListener() {
 
         @Override
         public void onAdLoaded(String placement) {
-            switchShowButton(placement, true);
+            ColorTvSdk.showAd(placement);
         }
 
         @Override
@@ -38,7 +31,7 @@ public class MainActivity extends Activity {
 
         @Override
         public void onAdClosed(String placement) {
-            switchShowButton(placement, false);
+            Log.d(MainActivity.class.getSimpleName(), "Ad has closed for placement: " + placement);
         }
     };
 
@@ -65,42 +58,31 @@ public class MainActivity extends Activity {
     }
 
     private void initViews() {
-        showDiscoveryCenterButton = (Button) findViewById(R.id.btnShowDiscoveryCenter);
-        showInterstitialButton= (Button) findViewById(R.id.btnShowInterstitial);
-        showEngagementButton = (Button) findViewById(R.id.btnShowEngagement);
-        showVideoButton = (Button) findViewById(R.id.btnShowVideo);
-
-        Button btnLoadDiscoveryCenter = (Button) findViewById(R.id.btnLoadDiscoveryCenter);
-        Button btnLoadInterstitial = (Button) findViewById(R.id.btnLoadInterstitial);
-        Button btnLoadEngagement = (Button) findViewById(R.id.btnLoadEngagement);
-        Button btnLoadVideo = (Button) findViewById(R.id.btnLoadVideo);
+        Button showRandomAdButton = (Button) findViewById(R.id.btnShowRandom);
+        Button showDiscoveryCenterButton = (Button) findViewById(R.id.btnShowDiscoveryCenter);
+        Button showInterstitialButton= (Button) findViewById(R.id.btnShowInterstitial);
+        Button showEngagementButton = (Button) findViewById(R.id.btnShowEngagement);
+        Button showVideoButton = (Button) findViewById(R.id.btnShowVideo);
 
         View.OnClickListener buttonClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
+                    case R.id.btnShowRandom:
+                        String[] adPlacements = {"DemoAppWall", "DemoInterstitial", "DemoFullScreen", "DemoVideo"};
+                        String randomizedAd = adPlacements[new Random().nextInt(adPlacements.length)];
+                        ColorTvSdk.loadAd(randomizedAd);
+                        break;
                     case R.id.btnShowDiscoveryCenter:
-                        ColorTvSdk.showAd("DemoAppWall");
-                        break;
-                    case R.id.btnShowInterstitial:
-                        ColorTvSdk.showAd("DemoInterstitial");
-                        break;
-                    case R.id.btnShowEngagement:
-                        ColorTvSdk.showAd("DemoFullScreen");
-                        break;
-                    case R.id.btnShowVideo:
-                        ColorTvSdk.showAd("DemoVideo");
-                        break;
-                    case R.id.btnLoadDiscoveryCenter:
                         ColorTvSdk.loadAd("DemoAppWall");
                         break;
-                    case R.id.btnLoadInterstitial:
+                    case R.id.btnShowInterstitial:
                         ColorTvSdk.loadAd("DemoInterstitial");
                         break;
-                    case R.id.btnLoadEngagement:
+                    case R.id.btnShowEngagement:
                         ColorTvSdk.loadAd("DemoFullScreen");
                         break;
-                    case R.id.btnLoadVideo:
+                    case R.id.btnShowVideo:
                         ColorTvSdk.loadAd("DemoVideo");
                         break;
                 }
@@ -108,14 +90,11 @@ public class MainActivity extends Activity {
             }
         };
 
+        showRandomAdButton.setOnClickListener(buttonClickListener);
         showDiscoveryCenterButton.setOnClickListener(buttonClickListener);
         showInterstitialButton.setOnClickListener(buttonClickListener);
         showEngagementButton.setOnClickListener(buttonClickListener);
         showVideoButton.setOnClickListener(buttonClickListener);
-        btnLoadDiscoveryCenter.setOnClickListener(buttonClickListener);
-        btnLoadInterstitial.setOnClickListener(buttonClickListener);
-        btnLoadEngagement.setOnClickListener(buttonClickListener);
-        btnLoadVideo.setOnClickListener(buttonClickListener);
     }
 
     @Override
@@ -124,26 +103,5 @@ public class MainActivity extends Activity {
 
         ColorTvSdk.clearOnCurrencyEarnedListeners();
         ColorTvSdk.onDestroy();
-    }
-
-    private void switchShowButton(String placement, boolean enabled) {
-        switch (placement) {
-            case DISCOVERY_CENTER_PLACEMENT:
-                showDiscoveryCenterButton.setEnabled(enabled);
-                showDiscoveryCenterButton.setFocusable(enabled);
-                break;
-            case INTERSTITIAL_PLACEMENT:
-                showInterstitialButton.setEnabled(enabled);
-                showInterstitialButton.setFocusable(enabled);
-                break;
-            case ENGAGEMENT_PLACEMENT:
-                showEngagementButton.setEnabled(enabled);
-                showEngagementButton.setFocusable(enabled);
-                break;
-            case VIDEO_PLACEMENT:
-                showVideoButton.setEnabled(enabled);
-                showVideoButton.setFocusable(enabled);
-                break;
-        }
     }
 }
