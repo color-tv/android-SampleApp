@@ -31,7 +31,7 @@
             android:layout_margin="@dimen/btn_margin"
             android:background="@drawable/button_interstitial"
             android:gravity="center"
-            android:text="Interstitial" />
+            android:text="Game Trailer" />
 
         <Button
             android:id="@+id/btnShowEngagement"
@@ -39,7 +39,7 @@
             android:layout_height="120px"
             android:layout_margin="@dimen/btn_margin"
             android:background="@drawable/button_engagement"
-            android:text="Engagement" />
+            android:text="Brand Engagement" />
 
         <Button
             android:id="@+id/btnShowVideo"
