@@ -12,8 +12,6 @@ import com.colortv.android.ColorTvError;
 import com.colortv.android.ColorTvSdk;
 import com.colortv.android.OnCurrencyEarnedListener;
 
-import java.util.Random;
-
 public class MainActivity extends Activity {
 
 
@@ -69,21 +67,20 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.btnShowRandom:
-                        String[] adPlacements = {"DemoAppWall", "DemoInterstitial", "DemoFullScreen", "DemoVideo"};
-                        String randomizedAd = adPlacements[new Random().nextInt(adPlacements.length)];
-                        ColorTvSdk.loadAd(randomizedAd);
+                        ColorTvSdk.loadAd("MainMenu");
                         break;
+                    //The placements below were configured in the UI to only show specific ad types
                     case R.id.btnShowDiscoveryCenter:
-                        ColorTvSdk.loadAd("DemoAppWall");
+                        ColorTvSdk.loadAd("Pause");
                         break;
                     case R.id.btnShowInterstitial:
-                        ColorTvSdk.loadAd("DemoInterstitial");
+                        ColorTvSdk.loadAd("InAppPurchase");
                         break;
                     case R.id.btnShowEngagement:
-                        ColorTvSdk.loadAd("DemoFullScreen");
+                        ColorTvSdk.loadAd("StageOpen");
                         break;
                     case R.id.btnShowVideo:
-                        ColorTvSdk.loadAd("DemoVideo");
+                        ColorTvSdk.loadAd("BetweenLevels");
                         break;
                 }
 

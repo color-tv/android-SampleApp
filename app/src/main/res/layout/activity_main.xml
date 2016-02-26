@@ -17,14 +17,6 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnShowRandom"
-            android:layout_width="300px"
-            android:layout_height="120px"
-            android:layout_margin="@dimen/btn_margin"
-            android:background="@drawable/button_random"
-            android:text="Random ad" />
-
-        <Button
             android:id="@+id/btnShowDiscoveryCenter"
             android:layout_width="300px"
             android:layout_height="120px"
@@ -56,5 +48,13 @@
             android:layout_margin="@dimen/btn_margin"
             android:background="@drawable/button_video"
             android:text="Video" />
+
+        <Button
+            android:id="@+id/btnShowRandom"
+            android:layout_width="300px"
+            android:layout_height="120px"
+            android:layout_margin="@dimen/btn_margin"
+            android:background="@drawable/button_random"
+            android:text="Random ad" />
     </LinearLayout>
 </LinearLayout>
