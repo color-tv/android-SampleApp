@@ -2,33 +2,88 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fullscreen_background"
+    android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="horizontal"
-    android:gravity="center_horizontal|bottom"
-    android:background="@drawable/fullscreen_background">
+    android:gravity="center_horizontal|bottom">
 
-    <Button
-        android:id="@+id/btnDiscoveryCenter"
-        android:layout_width="400px"
-        android:layout_height="120px"
-        android:layout_margin="@dimen/btn_margin"
-        android:text="Discovery center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnInterstitial"
-        android:layout_width="400px"
-        android:layout_height="120px"
-        android:layout_margin="@dimen/btn_margin"
+        <Button
+            android:id="@+id/btnLoadDiscoveryCenter"
+            android:layout_width="400px"
+            android:layout_height="120px"
+            android:layout_margin="@dimen/btn_margin"
+            android:text="Load Discovery center" />
 
-        android:text="Interstitial"/>
+        <Button
+            android:id="@+id/btnLoadInterstitial"
+            android:layout_width="400px"
+            android:layout_height="120px"
+            android:layout_margin="@dimen/btn_margin"
+            android:text="Load Interstitial" />
 
-    <Button
-        android:id="@+id/btnFullscreen"
-        android:layout_width="400px"
-        android:layout_height="120px"
-        android:layout_margin="@dimen/btn_margin"
-        android:text="Engagement"/>
+        <Button
+            android:id="@+id/btnLoadEngagement"
+            android:layout_width="400px"
+            android:layout_height="120px"
+            android:layout_margin="@dimen/btn_margin"
+            android:text="Load Engagement" />
 
+        <Button
+            android:id="@+id/btnLoadVideo"
+            android:layout_width="400px"
+            android:layout_height="120px"
+            android:layout_margin="@dimen/btn_margin"
+            android:text="Load Video" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnShowDiscoveryCenter"
+            android:layout_width="400px"
+            android:layout_height="120px"
+            android:layout_margin="@dimen/btn_margin"
+            android:enabled="false"
+            android:focusable="false"
+            android:text="Show Discovery center" />
+
+        <Button
+            android:id="@+id/btnShowInterstitial"
+            android:layout_width="400px"
+            android:layout_height="120px"
+            android:layout_margin="@dimen/btn_margin"
+            android:enabled="false"
+            android:focusable="false"
+            android:text="Show Interstitial" />
+
+        <Button
+            android:id="@+id/btnShowEngagement"
+            android:layout_width="400px"
+            android:layout_height="120px"
+            android:layout_margin="@dimen/btn_margin"
+            android:enabled="false"
+            android:focusable="false"
+            android:text="Show Engagement" />
+
+        <Button
+            android:id="@+id/btnShowVideo"
+            android:layout_width="400px"
+            android:layout_height="120px"
+            android:layout_margin="@dimen/btn_margin"
+            android:enabled="false"
+            android:focusable="false"
+            android:text="Show Video" />
+    </LinearLayout>
 </LinearLayout>

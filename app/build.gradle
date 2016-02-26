@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
-
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
@@ -19,9 +18,8 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
             zipAlignEnabled true
         }
     }
@@ -29,20 +27,6 @@ android {
 
 dependencies {
     compile 'com.android.support:leanback-v17:23.1.1'
-
-    compile(name:'app-release', ext:'aar')
     compile 'com.google.android.gms:play-services-ads:8.4.0'
-
-    compile ('com.google.dagger:dagger:2.0') {
-        exclude group: 'javax.inject'
-    }
-    apt ('com.google.dagger:dagger-compiler:2.0')
-    provided 'javax.annotation:jsr250-api:1.0'
+    compile 'com.colortv:android-sdk:+@aar'
 }
-
-def props = new Properties()
-props.load(new FileInputStream(rootProject.file("keystores/replay_demo_release.properties")))
-android.signingConfigs.release.storeFile rootProject.file(props.storeFile)
-android.signingConfigs.release.storePassword props.storePassword
-android.signingConfigs.release.keyAlias props.keyAlias
-android.signingConfigs.release.keyPassword props.keyPassword
