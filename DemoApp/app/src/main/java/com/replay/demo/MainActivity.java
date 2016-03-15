@@ -58,8 +58,8 @@ public class MainActivity extends Activity {
     private void initViews() {
         Button showRandomAdButton = (Button) findViewById(R.id.btnShowRandom);
         Button showDiscoveryCenterButton = (Button) findViewById(R.id.btnShowDiscoveryCenter);
-        Button showInterstitialButton= (Button) findViewById(R.id.btnShowInterstitial);
-        Button showEngagementButton = (Button) findViewById(R.id.btnShowEngagement);
+        Button showAppFeatureButton= (Button) findViewById(R.id.btnShowAppFeature);
+        Button showDirectEngagementButton = (Button) findViewById(R.id.btnShowDirectEngagement);
         Button showVideoButton = (Button) findViewById(R.id.btnShowVideo);
 
         View.OnClickListener buttonClickListener = new View.OnClickListener() {
@@ -73,10 +73,10 @@ public class MainActivity extends Activity {
                     case R.id.btnShowDiscoveryCenter:
                         ColorTvSdk.loadAd("Pause");
                         break;
-                    case R.id.btnShowInterstitial:
+                    case R.id.btnShowAppFeature:
                         ColorTvSdk.loadAd("InAppPurchase");
                         break;
-                    case R.id.btnShowEngagement:
+                    case R.id.btnShowDirectEngagement:
                         ColorTvSdk.loadAd("StageOpen");
                         break;
                     case R.id.btnShowVideo:
@@ -89,8 +89,8 @@ public class MainActivity extends Activity {
 
         showRandomAdButton.setOnClickListener(buttonClickListener);
         showDiscoveryCenterButton.setOnClickListener(buttonClickListener);
-        showInterstitialButton.setOnClickListener(buttonClickListener);
-        showEngagementButton.setOnClickListener(buttonClickListener);
+        showAppFeatureButton.setOnClickListener(buttonClickListener);
+        showDirectEngagementButton.setOnClickListener(buttonClickListener);
         showVideoButton.setOnClickListener(buttonClickListener);
     }
 

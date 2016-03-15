@@ -25,21 +25,21 @@
             android:text="Discovery center" />
 
         <Button
-            android:id="@+id/btnShowInterstitial"
+            android:id="@+id/btnShowAppFeature"
             android:layout_width="300px"
             android:layout_height="120px"
             android:layout_margin="@dimen/btn_margin"
             android:background="@drawable/button_interstitial"
             android:gravity="center"
-            android:text="Game Trailer" />
+            android:text="App Feature" />
 
         <Button
-            android:id="@+id/btnShowEngagement"
+            android:id="@+id/btnShowDirectEngagement"
             android:layout_width="300px"
             android:layout_height="120px"
             android:layout_margin="@dimen/btn_margin"
             android:background="@drawable/button_engagement"
-            android:text="Brand Engagement" />
+            android:text="Direct Engagement" />
 
         <Button
             android:id="@+id/btnShowVideo"
