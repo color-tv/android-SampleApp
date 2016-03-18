@@ -2,6 +2,10 @@
 
 This repository contains a demo application for the ColorTV SDK. It shows different ad formats and a proper way of implementing ColorTV SDK to an app. Use it as a reference to implement ColorTV SDK into your app. Below you can find a complete guide for integrating the SDK and using all of it's features.
 
+>**NOTE**
+>
+>This tutorial assumes you integrate the SDK by a Gradle Maven dependency. If you'd rather download the `.aar` package, please refer to [this page](https://bintray.com/colortv/maven/android-sdk/view).
+
 ##Getting Started
 Before getting started make sure you have: 
 
