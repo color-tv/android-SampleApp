@@ -13,7 +13,7 @@ Before getting started make sure you have:
 
 * Make sure your Android Studio version is up to date and that your application is targeting `minSdkVersion:21`
 
-##Adding Android TV SDK
+##Adding Android TV/Fire TV SDK
 
 ###Connecting Your App
 
