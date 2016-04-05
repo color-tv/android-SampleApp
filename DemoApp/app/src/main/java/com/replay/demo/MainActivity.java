@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.colortv.android.AdPlacement;
 import com.colortv.android.ColorTvAdListener;
 import com.colortv.android.ColorTvError;
 import com.colortv.android.ColorTvSdk;
@@ -67,20 +68,20 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.btnShowRandom:
-                        ColorTvSdk.loadAd("MainMenu");
+                        ColorTvSdk.loadAd(AdPlacement.MAIN_MENU);
                         break;
                     //The placements below were configured in the UI to only show specific ad types
                     case R.id.btnShowDiscoveryCenter:
-                        ColorTvSdk.loadAd("Pause");
+                        ColorTvSdk.loadAd(AdPlacement.PAUSE);
                         break;
                     case R.id.btnShowAppFeature:
-                        ColorTvSdk.loadAd("InAppPurchase");
+                        ColorTvSdk.loadAd(AdPlacement.IN_APP_PURCHASE);
                         break;
                     case R.id.btnShowDirectEngagement:
-                        ColorTvSdk.loadAd("StageOpen");
+                        ColorTvSdk.loadAd(AdPlacement.STAGE_OPEN);
                         break;
                     case R.id.btnShowVideo:
-                        ColorTvSdk.loadAd("BetweenLevels");
+                        ColorTvSdk.loadAd(AdPlacement.BETWEEN_LEVELS);
                         break;
                 }
 
