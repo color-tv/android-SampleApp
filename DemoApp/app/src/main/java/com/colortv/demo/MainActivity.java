@@ -1,4 +1,4 @@
-package com.replay.demo;
+package com.colortv.demo;
 
 import android.app.Activity;
 import android.os.Bundle;
