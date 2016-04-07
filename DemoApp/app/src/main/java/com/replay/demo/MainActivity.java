@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
                     case R.id.btnShowRandom:
                         ColorTvSdk.loadAd(AdPlacement.MAIN_MENU);
                         break;
-                    //The placements below were configured in the UI to only show specific ad types
+                    //The placements below were configured in the dashboard to only show specific ad types
                     case R.id.btnShowDiscoveryCenter:
                         ColorTvSdk.loadAd(AdPlacement.PAUSE);
                         break;
