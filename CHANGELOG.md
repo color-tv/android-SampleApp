@@ -1,5 +1,9 @@
 # Android SDK changelog
 
+## 1.2.4
+
+- Bugfixes for Amazon FireTV
+
 ## 1.2.3
 
 - Added new interstitial engagement ad unit,
