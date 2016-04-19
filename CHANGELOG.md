@@ -1,5 +1,9 @@
 # Android SDK changelog
 
+## 1.2.5
+
+- Bugfixes with click tracking
+
 ## 1.2.4
 
 - Bugfixes for Amazon FireTV
