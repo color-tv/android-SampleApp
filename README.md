@@ -11,7 +11,11 @@ Before getting started make sure you have:
 
 * Added your app in the My Applications section of the Color Dashboard. You need to do this so that you can get your App ID that you'll be adding to your app with our SDK.
 
-* Make sure your Android Studio version is up to date and that your application is targeting `minSdkVersion:21`
+* Make sure your Android Studio version is up to date and that your application is targeting `minSdkVersion:14`
+
+>**NOTE**
+>
+>    Our SDK supports Android versions 21+, but for convenience in maintaining one app for multiple platforms we've lowered the `minSdkVersion` to 14. ColorTv SDK will not be initialized however on versions below 21.
 
 ##Adding Android TV/Fire TV SDK
 
@@ -31,7 +35,7 @@ Then add the following dependencies in your app's **build.gradle** file in Andro
 
 ```groovy
 dependencies {
-    compile 'com.colortv:android-sdk:1.2.5'
+    compile 'com.colortv:android-sdk:1.2.6'
     compile 'com.google.android.gms:play-services-ads:8.4.0'
 }
 ```
@@ -114,7 +118,7 @@ ColorTvAdListener listener = new ColorTvAdListener() {
 
     @Override
     public void onAdLoaded(String placement) {
-        ColorTvSdk.show(placement);
+        ColorTvSdk.showAd(placement);
     }
 
     @Override
@@ -144,7 +148,7 @@ It is recommended that you use one of the predefined placements that you can fin
 In order to show an ad, call the following function: 
 
 ```java
-ColorTvSdk.show("chosen_placement");
+ColorTvSdk.showAd("chosen_placement");
 ```
 
 Calling this method will show an ad for the placement you pass. Make sure you get the `adLoaded` callback first, otherwise the ad won't be played.
