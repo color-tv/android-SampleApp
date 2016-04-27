@@ -1,5 +1,11 @@
 # Android SDK changelog
 
+## 1.2.6
+
+- Added apps ads for engagement format,
+- Crash fix when no Google Play Services available,
+- VAST impression calling fix
+
 ## 1.2.5
 
 - Bugfixes with click tracking
