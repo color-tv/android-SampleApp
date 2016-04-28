@@ -1,4 +1,4 @@
-# ColorTV SDK Demo App
+# ColorTV Android TV/Amazon Fire TV SDK Demo App
 
 This repository contains a demo application for the ColorTV SDK. It shows different ad formats and a proper way of implementing ColorTV SDK to an app. Use it as a reference to implement ColorTV SDK into your app. Below you can find a complete guide for integrating the SDK and using all of it's features.
 
@@ -37,6 +37,7 @@ Then add the following dependencies in your app's **build.gradle** file in Andro
 dependencies {
     compile 'com.colortv:android-sdk:1.2.6'
     compile 'com.google.android.gms:play-services-ads:8.4.0'
+    compile 'com.android.support:recyclerview-v7:23.3.0'
 }
 ```
 
