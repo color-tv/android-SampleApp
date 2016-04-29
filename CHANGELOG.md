@@ -1,5 +1,10 @@
 # Android SDK changelog
 
+## 1.2.7
+
+- Added placement name for reward callback
+- Bugfixes
+
 ## 1.2.6
 
 - Added apps ads for engagement format,

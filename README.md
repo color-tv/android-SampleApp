@@ -35,7 +35,7 @@ Then add the following dependencies in your app's **build.gradle** file in Andro
 
 ```groovy
 dependencies {
-    compile 'com.colortv:android-sdk:1.2.6'
+    compile 'com.colortv:android-sdk:1.2.7'
     compile 'com.google.android.gms:play-services-ads:8.4.0'
     compile 'com.android.support:recyclerview-v7:23.3.0'
 }
@@ -185,7 +185,7 @@ A listener must be added in order to receive events when a virtual currency tran
 ```java
 private OnCurrencyEarnedListener listener = new OnCurrencyEarnedListener() {
     @Override
-    public void onCurrencyEarned(int currencyAmount, String currencyType){
+    public void onCurrencyEarned(String placement, int currencyAmount, String currencyType){
 
     }
 };
@@ -311,7 +311,7 @@ public class MainActivity extends Activity {
 
         ColorTvSdk.addOnCurrencyEarnedListener(new OnCurrencyEarnedListener() {
             @Override
-            public void onCurrencyEarned(int currencyAmount, String currencyType) {
+            public void onCurrencyEarned(String placement, int currencyAmount, String currencyType) {
                 Toast.makeText(MainActivity.this, "Received " + currencyAmount + " " + currencyType, Toast.LENGTH_LONG).show();
             }
         });

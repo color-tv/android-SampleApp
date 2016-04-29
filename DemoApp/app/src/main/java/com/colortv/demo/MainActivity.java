@@ -45,9 +45,9 @@ public class MainActivity extends Activity {
         ColorTvSdk.init(this, "566dbcc3326aeb750132fdfa");
         ColorTvSdk.addOnCurrencyEarnedListener(new OnCurrencyEarnedListener() {
             @Override
-            public void onCurrencyEarned(int currencyAmount, String currencyType) {
-                Log.d("ColorTvSdk", "Received " + currencyAmount + currencyType);
-                Toast.makeText(MainActivity.this, "Received " + currencyAmount + "x" + currencyType, Toast.LENGTH_LONG).show();
+            public void onCurrencyEarned(String placement, int currencyAmount, String currencyType) {
+                Log.d("ColorTvSdk", "Received " + currencyAmount + " x " + currencyType);
+                Toast.makeText(MainActivity.this, "Received " + currencyAmount + " x " + currencyType, Toast.LENGTH_LONG).show();
             }
         });
 
