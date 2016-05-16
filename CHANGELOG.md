@@ -1,5 +1,10 @@
 # Android SDK changelog
 
+## 1.2.8
+
+- Improved video performance
+- Bugfixes
+
 ## 1.2.7
 
 - Added placement name for reward callback
