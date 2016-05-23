@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
         initViews();
 
         ColorTvSdk.setDebugMode(true);
-        ColorTvSdk.init(this, "566dbcc3326aeb750132fdfa");
+        ColorTvSdk.init(this, "08271056-5211-4ae6-bf1c-12e344455383");
         ColorTvSdk.addOnCurrencyEarnedListener(new OnCurrencyEarnedListener() {
             @Override
             public void onCurrencyEarned(String placement, int currencyAmount, String currencyType) {
