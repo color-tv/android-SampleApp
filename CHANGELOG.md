@@ -1,5 +1,12 @@
 # Android SDK changelog
 
+## 1.2.9
+
+- Improved reward callback timing,
+- Added an "auto-close" timer,
+- Redesigned Discovery Center ad type,
+- Bugfixes
+
 ## 1.2.8
 
 - Improved video performance
