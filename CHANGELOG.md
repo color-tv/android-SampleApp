@@ -1,5 +1,10 @@
 # Android SDK changelog
 
+## 1.3.0
+
+- Added possibility to remove the voice input functionality,
+- Bugfixes
+
 ## 1.2.9
 
 - Improved reward callback timing,
