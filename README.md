@@ -141,15 +141,15 @@ ColorTvSdk.registerAdListener(listener);
 To load an ad for a certain placement, you need to call the following method:
 
 ```java
-ColorTvSdk.loadAd("chosen_placement");
+ColorTvSdk.loadAd(AdPlacement.LEVEL_UP);
 ```
 
-It is recommended that you use one of the predefined placements that you can find in `AdPlacement` class, e.g. `AdPlacement.LEVEL_UP`,  You can also use a custom placement.
+Use one of the predefined placements that you can find in `AdPlacement` class, e.g. `AdPlacement.LEVEL_UP`.
 
 In order to show an ad, call the following function: 
 
 ```java
-ColorTvSdk.showAd("chosen_placement");
+ColorTvSdk.showAd(AdPlacement.LEVEL_UP);
 ```
 
 Calling this method will show an ad for the placement you pass. Make sure you get the `adLoaded` callback first, otherwise the ad won't be played.
