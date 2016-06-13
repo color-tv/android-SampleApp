@@ -32,6 +32,11 @@ public class MainActivity extends Activity {
         public void onAdClosed(String placement) {
             Log.d(MainActivity.class.getSimpleName(), "Ad has closed for placement: " + placement);
         }
+
+        @Override
+        public void onAdExpired(String placement) {
+            Log.d(MainActivity.class.getSimpleName(), "Ad has expired for placement: " + placement);
+        }
     };
 
     @Override

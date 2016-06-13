@@ -35,7 +35,7 @@ Then add the following dependencies in your app's **build.gradle** file in Andro
 
 ```groovy
 dependencies {
-    compile 'com.colortv:android-sdk:1.3.0'
+    compile 'com.colortv:android-sdk:1.4.0'
     compile 'com.google.android.gms:play-services-ads:8.4.0'
     compile 'com.android.support:recyclerview-v7:23.3.0'
 }
@@ -123,11 +123,15 @@ ColorTvAdListener listener = new ColorTvAdListener() {
     }
 
     @Override
-        public void onAdError(String placement, ColorTvError colorTvError) {
+    public void onAdError(String placement, ColorTvError colorTvError) {
     }
 
     @Override
-        public void onAdClosed(String placement) {
+    public void onAdClosed(String placement) {
+    }
+
+    @Override
+    public void onAdExpired(String placement) {
     }
 };
 ```
@@ -304,6 +308,10 @@ public class MainActivity extends Activity {
 
         @Override
         public void onAdClosed(String placement) {
+        }
+
+        @Override
+        public void onAdExpired(String placement) {
         }
     };
     
