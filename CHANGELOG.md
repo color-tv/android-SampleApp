@@ -1,5 +1,12 @@
 # Android SDK changelog
 
+## 1.4.0
+
+- Added onAdExpired callback,
+- Improved video loading performance,
+- Bugfixes
+
+
 ## 1.3.0
 
 - Added possibility to remove the voice input functionality,
