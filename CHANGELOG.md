@@ -1,11 +1,15 @@
 # Android SDK changelog
 
+## 1.5.0
+
+- Added VAST ads fallbacks providing better fillrate,
+- Bugfixes
+
 ## 1.4.0
 
 - Added onAdExpired callback,
 - Improved video loading performance,
 - Bugfixes
-
 
 ## 1.3.0
 

@@ -3,7 +3,7 @@ apply plugin: 'com.neenbedankt.android-apt'
 
 repositories {
     maven {
-        url  "http://colortv.bintray.com/maven"
+        url "http://colortv.bintray.com/maven"
     }
 }
 
@@ -34,5 +34,5 @@ android {
 dependencies {
     compile 'com.android.support:leanback-v17:23.3.0'
     compile 'com.google.android.gms:play-services-ads:8.4.0'
-    compile 'com.colortv:android-sdk:1.4.0'
+    compile 'com.colortv:android-sdk:1.5.0'
 }
