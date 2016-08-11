@@ -1,5 +1,9 @@
 # Android SDK changelog
 
+## 1.5.1
+
+- Fixed bug caused by updating recycler view to version 24.* 
+
 ## 1.5.0
 
 - Added VAST ads fallbacks providing better fillrate,
