@@ -1,5 +1,10 @@
 # Android SDK changelog
 
+## 1.6.0
+
+- Added a "watched" flag to "onAdClosed" callback, the callback without this flag is now deprecated,
+- Minor bugfixes
+
 ## 1.5.1
 
 - Fixed bug caused by updating recycler view to version 24.* 

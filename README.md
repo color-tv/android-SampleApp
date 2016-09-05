@@ -127,7 +127,7 @@ ColorTvAdListener listener = new ColorTvAdListener() {
     }
 
     @Override
-    public void onAdClosed(String placement) {
+    public void onAdClosed(String placement, boolean watched) {
     }
 
     @Override
@@ -141,6 +141,10 @@ and register that listener to the SDK:
 ```java
 ColorTvSdk.registerAdListener(listener);
 ```
+
+>**NOTE**
+>
+>The **onAdClosed** callback without the **watched** flag has been deprecated and will be removed in future versions of the SDK.
 
 To load an ad for a certain placement, you need to call the following method:
 
