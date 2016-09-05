@@ -29,8 +29,8 @@ public class MainActivity extends Activity {
         }
 
         @Override
-        public void onAdClosed(String placement) {
-            Log.d(MainActivity.class.getSimpleName(), "Ad has closed for placement: " + placement);
+        public void onAdClosed(String placement, boolean watched) {
+            Log.d(MainActivity.class.getSimpleName(), "Ad has closed for placement: " + placement + " and watched: " + watched);
         }
 
         @Override
