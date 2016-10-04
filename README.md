@@ -17,7 +17,9 @@ Before getting started make sure you have:
 >
 >    Our SDK supports Android versions 21+, but for convenience in maintaining one app for multiple platforms we've lowered the `minSdkVersion` to 14. ColorTv SDK will not be initialized however on versions below 21.
 
-##Adding Android TV/Fire TV SDK
+##Adding Android TV/Amazon Fire TV SDK
+
+For a demo of the correct integration, please refer to our [demo application](https://github.com/color-tv/android-DemoApp)
 
 ###Connecting Your App
 
@@ -35,9 +37,9 @@ Then add the following dependencies in your app's **build.gradle** file in Andro
 
 ```groovy
 dependencies {
-    compile 'com.colortv:android-sdk:1.6.0'
-    compile 'com.google.android.gms:play-services-ads:9.4.0'
-    compile 'com.android.support:recyclerview-v7:24.1.1'
+    compile 'com.colortv:android-sdk:2.0.0'
+    compile 'com.google.android.gms:play-services-ads:9.6.1'
+    compile 'com.android.support:recyclerview-v7:24.2.1'
 }
 ```
 
@@ -68,7 +70,7 @@ Your app id is generated in the publisher dashboard after adding or editing an a
 Ads may be shown wherever you place them inside your app, but they **must** include a Placement parameter to indicate the specific location. Placements are used to optimize user experience and analytics. 
 
 ###Placements
-Below are all the possible placement values: 
+Below are all predefined placement values: 
 
 - AppLaunch
 
@@ -107,11 +109,23 @@ Below are all the possible placement values:
 - InsufficientCurrency
 
 - FinishedTutorial
+
+- VideoStart
+
+- VideoPause
+
+- VideoStop
+
+- VideoEnd
  
 >**NOTE**
 >
->    You can choose what ad units you want to show for a specific placement in the dashboard, [click to learn more about Ad Units](https://www.colortv.com/dashboard/docs/#ad-units)
-
+>    You can choose what ad units you want to show for a specific placement in the dashboard, [click to learn more about Ad Units](index.md#ad-units)
+   
+>**NOTE**
+>
+>    The `AdPlacement` class has been deprecated and replaced by `Placements`. The old version will be removed in future versions of the SDK.
+    
 To get callbacks about the ad status, you need to create a `ColorTvAdListener` object by overriding it's methods:
 
 ```java
@@ -144,28 +158,97 @@ ColorTvSdk.registerAdListener(listener);
 
 >**NOTE**
 >
->The **onAdClosed** callback without the **watched** flag has been deprecated and will be removed in future versions of the SDK.
+>    The **onAdClosed** callback without the **watched** flag has been deprecated and will be removed in future versions of the SDK.
 
 To load an ad for a certain placement, you need to call the following method:
 
 ```java
-ColorTvSdk.loadAd(AdPlacement.LEVEL_UP);
+ColorTvSdk.loadAd(Placements.LEVEL_UP);
 ```
 
-Use one of the predefined placements that you can find in `AdPlacement` class, e.g. `AdPlacement.LEVEL_UP`.
+Use one of the predefined placements that you can find in `Placements` class, e.g. `Placements.LEVEL_UP`.
 
 In order to show an ad, call the following function: 
 
 ```java
-ColorTvSdk.showAd(AdPlacement.LEVEL_UP);
+ColorTvSdk.showAd(Placements.LEVEL_UP);
 ```
 
-Calling this method will show an ad for the placement you pass. Make sure you get the `adLoaded` callback first, otherwise the ad won't be played.
+Calling this method will show an ad for the placement you pass. Make sure you get the `onAdLoaded` callback first, otherwise the ad won't be played.
 
 >**NOTE**
 >
->   It is recommended to set up multiple placements inside your app to maximize monetization and improve user experience.
+>    It is recommended to set up multiple placements inside your app to maximize monetization and improve user experience.
 
+##Displaying Recommendation Center
+
+>**NOTE**
+>
+>    Only for Content Providers
+
+Displaying Recommendation Center is simillar to displaying ads. It may be shown wherever you place them inside your app, but you need to include a Placement parameter to indicate the specific location. Placements are used to optimize user experience and analytics. 
+
+You can use the same Placements as are pointed in [Ads section](#placements).
+
+To get callbacks about the content recommendation status, you need to create a ColorTvContentRecommendationListener object by overriding it's methods:
+
+```java
+ColorTvContentRecommendationListener listener = new ColorTvContentRecommendationListener() {
+
+    @Override
+    public void onLoaded(String placement) {
+    }
+
+    @Override
+    public void onError(String placement, ColorTvError colorTvError) {
+    }
+
+    @Override
+    public void onClosed(String placement, boolean watched) {
+    }
+
+    @Override
+    public void onExpired(String placement) {
+    }
+    
+    @Override
+    public void onContentChosen(String videoId, String videoUrl) {
+    }
+};
+```
+
+and register that listener to the SDK:
+
+```java
+ColorTvSdk.registerContentRecommendationListener(listener);
+```
+
+>**NOTE**
+>
+>if you set up videoUrl as a deep link, then onContentChosen callback is invoked simultaneously to opening new activity with the deep link.
+
+To load a Content Recommendation for a certain placement, you need to call one of the following methods:
+
+```java
+ColorTvSdk.loadContentRecommendation(Placements.LEVEL_UP, previousVideoId);
+
+ColorTvSdk.loadContentRecommendation(Placements.LEVEL_UP);
+```
+
+Use one of the predefined placements that you can find in `Placements` class, e.g. `Placements.LEVEL_UP`.
+If you display Recommendation Center after playing some video you should additionally provide id of this video to get a better recommendation.
+
+In order to show Content Recommendation, call the following function: 
+
+```java
+ColorTvSdk.showContentRecommendation(Placements.LEVEL_UP);
+```
+
+Calling this method will show Content Recommendation for the placement you pass. Make sure you get the `onLoaded` callback first, otherwise the Content Recommendation won't be displayed.
+
+>**NOTE**
+>
+>    It is recommended to set up multiple placements inside your app to maximize monetization and improve user experience.  
 
 ##Declaring Session
 
@@ -188,6 +271,7 @@ protected void onDestroy() {
 ```
 
 ##Earning Virtual Currency
+
 A listener must be added in order to receive events when a virtual currency transaction has occurred. 
 
 ```java
@@ -215,7 +299,7 @@ Use the following function to cancel all listeners:
 ColorTvSdk.clearOnCurrencyEarnedListeners();
 ```
 
->**Reminder!**
+>**NOTE**
 >
 >    Session must also be implemented for virtual currency transactions to function.
 
@@ -225,6 +309,36 @@ In order to distribute currency to the same user but on other device, use below:
 ```java
 ColorTvSdk.setUserId("user123");
 ```
+
+##Video Tracking
+
+>**NOTE**
+>
+>    Only for Content Providers
+
+In order to provide additional data for ColorTv Analytics and to improve Content Recommendation, you can report events related to your videos.
+
+###Tracking Events
+Below are all predefined in `TrackingEventType` class tracking event values: 
+
+- VIDEO_STARTED
+
+- VIDEO_STOPPED
+
+- VIDEO_COMPLETED
+
+You can report them calling one of following methods:
+
+```java
+ColorTvSdk.reportVideoTrackingEvent(videoId, TrackingEventType.VIDEO_STOPPED, watchedSeconds);
+
+ColorTvSdk.reportVideoTrackingEvent(videoId, TrackingEventType.VIDEO_STARTED);
+```
+
+`videoId` is an id which you have set in video feed provided in ColorTv dashboard.
+`watchedSeconds` is a watched duration of video with given id.
+
+You should use the first method only to report `VIDEO_STOPPED` event, or some custom events which you need to know the time they happened. Second method should be used to report `VIDEO_STARTED`, `VIDEO_COMPLETED` events, or some custom events which aren't related to moment in the video.
 
 ##INSTALL_REFERRER Conflict
 
@@ -241,7 +355,7 @@ If any of your `BroadcastReceiver` class declared in `AndroidManifest.xml` conta
 Add the following code to your `AndroidManifest.xml` file: 
 
 ```xml
-<receiver android:name="com.replay.android.ColorTvBroadcastReceiver">
+<receiver android:name="com.colortv.android.ColorTvBroadcastReceiver">
 ```
 
 In your BroadcastReceiver that handles action **com.android.vending.INSTALL_REFERRER**, add Java code:
@@ -290,7 +404,7 @@ ColorTvSdk.setRecordAudioEnabled(false);
 After completing all previous steps your Activity could look like this:
 
 ```java
-import com.colortv.android.AdPlacement;
+import com.colortv.android.Placements;
 import com.colortv.android.ColorTvAdListener;
 import com.colortv.android.ColorTvError;
 import com.colortv.android.ColorTvSdk;
@@ -298,7 +412,7 @@ import com.colortv.android.OnCurrencyEarnedListener;
 
 public class MainActivity extends Activity {
 
-    private ColorTvAdListener listener = new ColorTvAdListener() {
+    private ColorTvAdListener adListener = new ColorTvAdListener() {
 
         @Override
         public void onAdLoaded(String placement) {
@@ -319,6 +433,32 @@ public class MainActivity extends Activity {
         }
     };
     
+    private ColorTvContentRecommendationListener recommendationListener = new ColorTvContentRecommendationListener() {
+
+        @Override
+        public void onLoaded(String placement) {
+            ColorTvSdk.showContentRecommendation(placement);
+        }
+
+        @Override
+        public void onError(String placement, ColorTvError colorTvError) {
+        }
+
+        @Override
+        public void onClosed(String placement) {
+        }
+
+        @Override
+        public void onExpired(String placement) {
+        }
+        
+        @Override
+        public void onContentChosen(String videoId, String videoUrl) {
+            //play video with videoId, kept under videoUrl
+        }
+    }
+    };
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -326,12 +466,20 @@ public class MainActivity extends Activity {
 
         ColorTvSdk.setDebugMode(true);
         ColorTvSdk.init(this, "your_app_id");
-        ColorTvSdk.registerOnAdStatusChangedListener(listener);
+        ColorTvSdk.registerAdListener(adListener);
+        ColorTvSdk.registerContentRecommendationListener(recommendationListener);
 
         findViewById(R.id.btnShowAd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ColorTvSdk.loadAd(AdPlacement.APP_LAUNCH);
+                ColorTvSdk.loadAd(Placements.APP_LAUNCH);
+            }
+        });
+        
+        findViewById(R.id.btnShowContentRec).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ColorTvSdk.loadContentRecommendation(Placements.VIDEO_START);
             }
         });
 
