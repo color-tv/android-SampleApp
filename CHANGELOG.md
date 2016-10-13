@@ -1,5 +1,17 @@
 # Android SDK changelog
 
+## 2.1.0
+
+- Added possibility to customize the look of Discovery Center and Content Recommendation
+- Content Recommendations autoplays when there's no interaction
+- Bugfixes
+
+## 2.0.0
+
+- Added Content Recommendation
+- Added Video Tracking
+- Bugfixes
+
 ## 1.6.0
 
 - Added a "watched" flag to "onAdClosed" callback, the callback without this flag is now deprecated,

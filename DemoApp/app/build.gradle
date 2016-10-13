@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 
 repositories {
     maven {
@@ -9,12 +8,12 @@ repositories {
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    buildToolsVersion "24.0.3"
 
     defaultConfig {
         applicationId "com.colortv.demo"
         minSdkVersion 21
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
     }
@@ -34,5 +33,5 @@ android {
 dependencies {
     compile 'com.android.support:leanback-v17:24.2.1'
     compile 'com.google.android.gms:play-services-ads:9.6.1'
-    compile 'com.colortv:android-sdk:2.0.0'
+    compile 'com.colortv:android-sdk:2.1.0'
 }
