@@ -37,7 +37,7 @@ Then add the following dependencies in your app's **build.gradle** file in Andro
 
 ```groovy
 dependencies {
-    compile 'com.colortv:android-sdk:2.1.0'
+    compile 'com.colortv:android-sdk:3.0.0'
     compile 'com.google.android.gms:play-services-ads:9.6.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
 }
@@ -309,7 +309,6 @@ In order to distribute currency to the same user but on other device, use below:
 ```java
 ColorTvSdk.setUserId("user123");
 ```
-
 ##Video Tracking
 
 >**NOTE**
@@ -319,26 +318,29 @@ ColorTvSdk.setUserId("user123");
 In order to provide additional data for ColorTv Analytics and to improve Content Recommendation, you can report events related to your videos.
 
 ###Tracking Events
+
 Below are all predefined in `TrackingEventType` class tracking event values: 
 
 - VIDEO_STARTED
 
+- VIDEO_PAUSED
+
 - VIDEO_STOPPED
+
+- VIDEO_RESUMED
 
 - VIDEO_COMPLETED
 
-You can report them calling one of following methods:
+You can report them by calling the following method:
 
 ```java
-ColorTvSdk.reportVideoTrackingEvent(videoId, TrackingEventType.VIDEO_STOPPED, watchedSeconds);
-
-ColorTvSdk.reportVideoTrackingEvent(videoId, TrackingEventType.VIDEO_STARTED);
+ColorTvSdk.reportVideoTrackingEvent(videoId, TrackingEventType.VIDEO_STOPPED, positionSeconds);
 ```
 
 `videoId` is an id which you have set in video feed provided in ColorTv dashboard.
-`watchedSeconds` is a watched duration of video with given id.
+`positionSeconds` is a postition at which the given event occur.
 
-You should use the first method only to report `VIDEO_STOPPED` event, or some custom events which you need to know the time they happened. Second method should be used to report `VIDEO_STARTED`, `VIDEO_COMPLETED` events, or some custom events which aren't related to moment in the video.
+To report fast-forwarding or rewinding through the video, use `VIDEO_PAUSED` at the start and `VIDEO_RESUMED` at the end of the process.
 
 ##INSTALL_REFERRER Conflict
 
