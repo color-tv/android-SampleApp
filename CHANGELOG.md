@@ -1,5 +1,12 @@
 # Android SDK changelog
 
+## 3.0.0
+
+- Released mobile content recommendation
+- Created a simplified content recommendation layout
+- Optimized memory usage
+- Bugfixes
+
 ## 2.1.0
 
 - Added possibility to customize the look of Discovery Center and Content Recommendation
