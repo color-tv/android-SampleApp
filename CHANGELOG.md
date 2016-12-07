@@ -1,5 +1,9 @@
 # Android SDK changelog
 
+## 3.1.0
+- Added location tracking option
+- Major bugfixes
+
 ## 3.0.0
 
 - Released mobile content recommendation
