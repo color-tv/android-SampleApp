@@ -1,5 +1,8 @@
 # Android SDK changelog
 
+## 3.2.0
+- Added video preview for the more robust content recommendation format
+
 ## 3.1.0
 - Added location tracking option
 - Major bugfixes
