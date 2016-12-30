@@ -1,5 +1,10 @@
 # Android SDK changelog
 
+## 3.3.0
+- Added video preview for mobile content recommendation
+- Added possibility to track video events passing ExoPlayer object
+- Added possibility to customize mobile content recommendation colors with values taken from dashboard 
+
 ## 3.2.0
 - Added video preview for the more robust content recommendation format
 
