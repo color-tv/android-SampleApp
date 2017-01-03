@@ -37,7 +37,7 @@ Then add the following dependencies in your app's **build.gradle** file in Andro
 
 ```groovy
 dependencies {
-    compile 'com.colortv:android-sdk:3.2.0'
+    compile 'com.colortv:android-sdk:3.3.0'
     compile 'com.google.android.gms:play-services-ads:9.6.1'
     compile 'com.google.android.gms:play-services-location:9.6.1' //optional
     compile 'com.android.support:recyclerview-v7:24.2.1'
@@ -346,6 +346,22 @@ ColorTvSdk.reportVideoTrackingEvent(videoId, TrackingEventType.VIDEO_STOPPED, po
 `positionSeconds` is a postition at which the given event occur.
 
 To report fast-forwarding or rewinding through the video, use `VIDEO_PAUSED` at the start and `VIDEO_RESUMED` at the end of the process.
+
+If you are using ExoPlayer you can track your video events calling the following method:
+
+```java
+ColorTvSdk.setExoPlayerToTrackVideo(exoPlayer);
+```
+
+`exoPlayer` is your ExoPlayer instance.
+
+If you are launching some video without usage of ColorTv Content Recommendation Center then you need to also call:
+
+```java
+ColorTvSdk.setVideoIdForPlayerTracking(videoId);
+```
+
+with id of launching video, set up in ColorTv Dashbord. In case you are using ColorTv Content Recommendation video id will be taken from recommendation.
 
 ##INSTALL_REFERRER Conflict
 
