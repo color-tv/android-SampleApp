@@ -10,9 +10,9 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:gravity="center_horizontal|bottom">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center_horizontal|bottom"
         android:orientation="horizontal">
 
@@ -22,16 +22,16 @@
             android:layout_height="120px"
             android:layout_margin="@dimen/btn_margin"
             android:background="@drawable/button_discovery"
-            android:text="Discovery center" />
+            android:text="Discovery center"/>
 
         <Button
             android:id="@+id/btnShowAppFeature"
             android:layout_width="300px"
             android:layout_height="120px"
-            android:layout_margin="@dimen/btn_margin"
             android:background="@drawable/button_interstitial"
-            android:gravity="center"
-            android:text="App Feature" />
+            android:text="App Feature"
+            android:layout_margin="@dimen/btn_margin"
+            android:layout_toEndOf="@+id/btnShowDiscoveryCenter" />
 
         <Button
             android:id="@+id/btnShowDirectEngagement"
@@ -39,7 +39,8 @@
             android:layout_height="120px"
             android:layout_margin="@dimen/btn_margin"
             android:background="@drawable/button_engagement"
-            android:text="Direct Engagement" />
+            android:text="Direct Engagement"
+            android:layout_toEndOf="@id/btnShowAppFeature"/>
 
         <Button
             android:id="@+id/btnShowVideo"
@@ -47,7 +48,8 @@
             android:layout_height="120px"
             android:layout_margin="@dimen/btn_margin"
             android:background="@drawable/button_video"
-            android:text="Video" />
+            android:text="Video"
+            android:layout_toEndOf="@id/btnShowDirectEngagement"/>
 
         <Button
             android:id="@+id/btnShowRandom"
@@ -55,6 +57,18 @@
             android:layout_height="120px"
             android:layout_margin="@dimen/btn_margin"
             android:background="@drawable/button_random"
-            android:text="Random ad" />
-    </LinearLayout>
+            android:text="Random ad"
+            android:layout_toEndOf="@id/btnShowVideo"/>
+
+        <Button
+            android:id="@+id/btnShowContentRecommendation"
+            android:layout_width="300px"
+            android:layout_height="120px"
+            android:layout_margin="@dimen/btn_margin"
+            android:background="@drawable/button_discovery"
+            android:text="Discovery center"
+            android:layout_toEndOf="@id/btnShowVideo"
+            android:layout_above="@id/btnShowRandom"/>
+    </RelativeLayout>
+
 </LinearLayout>
