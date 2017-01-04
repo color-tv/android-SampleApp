@@ -2,8 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:state_focused="true"
-        android:drawable="@drawable/button_random_focused" />
+        android:drawable="@drawable/button_content_recommendation_focused" />
     <item
         android:state_enabled="true"
-        android:drawable="@drawable/button_random_normal" />
+        android:drawable="@drawable/button_content_recommendation_normal" />
 </selector>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="random">#c492db</color>
-    <color name="random_focused">#b96fdb</color>
+    <color name="video">#c492db</color>
+    <color name="video_focused">#b96fdb</color>
 
     <color name="discovery">#E35050</color>
     <color name="discovery_focused">#ff3030</color>
@@ -12,6 +12,6 @@
     <color name="engagement">#AFD739</color>
     <color name="engagement_focused">#b6f00b</color>
 
-    <color name="video">#79ccec</color>
-    <color name="video_focused">#42caff</color>
+    <color name="content_recommendation">#79ccec</color>
+    <color name="content_recommendation_focused">#42caff</color>
 </resources>
