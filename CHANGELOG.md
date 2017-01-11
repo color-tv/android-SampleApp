@@ -1,5 +1,9 @@
 # Android SDK changelog
 
+## 3.4.0
+- Updated Exoplayer tracking implementation for the new version of ExoPlayer 2.1.1
+- Bugfixes
+
 ## 3.3.0
 - Added video preview for mobile content recommendation
 - Added possibility to track video events passing ExoPlayer object
