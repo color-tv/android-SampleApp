@@ -1,6 +1,6 @@
-# ColorTV Android TV/Amazon Fire TV SDK Demo App
+# ColorTV Android TV/Amazon Fire TV SDK Sample App
 
-This repository contains a demo application for the ColorTV SDK. It shows different ad formats and a proper way of implementing ColorTV SDK to an app. Use it as a reference to implement ColorTV SDK into your app. Below you can find a complete guide for integrating the SDK and using all of it's features.
+This repository contains a sample application for the ColorTV SDK. It shows different ad formats and a proper way of implementing ColorTV SDK to an app. Use it as a reference to implement ColorTV SDK into your app. Below you can find a complete guide for integrating the SDK and using all of it's features.
 
 >**NOTE**
 >
@@ -18,8 +18,6 @@ Before getting started make sure you have:
 >    Our SDK supports Android versions 21+, but for convenience in maintaining one app for multiple platforms we've lowered the `minSdkVersion` to 14. ColorTv SDK will not be initialized however on versions below 21.
 
 ##Adding Android TV/Amazon Fire TV SDK
-
-For a demo of the correct integration, please refer to our [demo application](https://github.com/color-tv/android-DemoApp)
 
 ###Connecting Your App
 
