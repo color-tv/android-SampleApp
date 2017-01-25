@@ -13,48 +13,54 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal|bottom"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <Button
+            android:id="@+id/btnShowContentRecommendation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/btn_margin"
+            android:background="@drawable/button_content_recommendation"
+            android:text="Content Recommendation"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btnShowDiscoveryCenter"
-            android:layout_width="300px"
-            android:layout_height="120px"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/btn_margin"
             android:background="@drawable/button_discovery"
-            android:text="Discovery center" />
+            android:text="Discovery center"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btnShowAppFeature"
-            android:layout_width="300px"
-            android:layout_height="120px"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/button_interstitial"
-            android:gravity="center"
-            android:text="App Feature" />
+            android:text="App Feature"
+            android:layout_margin="@dimen/btn_margin"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btnShowDirectEngagement"
-            android:layout_width="300px"
-            android:layout_height="120px"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/btn_margin"
             android:background="@drawable/button_engagement"
-            android:text="Direct Engagement" />
+            android:text="Direct Engagement"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btnShowVideo"
-            android:layout_width="300px"
-            android:layout_height="120px"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/btn_margin"
             android:background="@drawable/button_video"
-            android:text="Video" />
-
-        <Button
-            android:id="@+id/btnShowRandom"
-            android:layout_width="300px"
-            android:layout_height="120px"
-            android:layout_margin="@dimen/btn_margin"
-            android:background="@drawable/button_random"
-            android:text="Random ad" />
+            android:text="Video"
+            android:layout_weight="1"/>
     </LinearLayout>
+
 </LinearLayout>
