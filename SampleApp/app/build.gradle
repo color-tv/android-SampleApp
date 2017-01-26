@@ -35,6 +35,6 @@ dependencies {
     compile 'com.android.support:leanback-v17:25.1.0'
     compile 'com.google.android.gms:play-services-ads:9.6.1'
     compile 'com.google.android.gms:play-services-location:9.6.1'
-    compile 'com.colortv:android-sdk:3.4.0'
+    compile 'com.colortv:android-sdk:3.4.1'
     compile 'com.google.android.exoplayer:exoplayer:r2.1.1'
 }
