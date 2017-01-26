@@ -35,7 +35,7 @@ Then add the following dependencies in your app's **build.gradle** file in Andro
 
 ```groovy
 dependencies {
-    compile 'com.colortv:android-sdk:3.4.0'
+    compile 'com.colortv:android-sdk:3.4.1'
     compile 'com.google.android.gms:play-services-ads:9.6.1'
     compile 'com.google.android.gms:play-services-location:9.6.1' //optional
     compile 'com.android.support:recyclerview-v7:24.2.1'

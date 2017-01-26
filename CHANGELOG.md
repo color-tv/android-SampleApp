@@ -1,5 +1,10 @@
 # Android SDK changelog
 
+## 3.4.1
+- Major bugfix concerning ad delivery
+- Small UI tweaks
+- Minor bugfixes
+
 ## 3.4.0
 - Updated Exoplayer tracking implementation for the new version of ExoPlayer 2.1.1
 - Bugfixes
