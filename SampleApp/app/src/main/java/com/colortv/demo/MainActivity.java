@@ -1,7 +1,9 @@
 package com.colortv.demo;
 
 import android.app.Activity;
+import android.app.UiModeManager;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,8 +21,8 @@ public class MainActivity extends Activity {
     public static final String VIDEO_URL = "videoUrl";
     public static final String VIDEO_ID = "videoId";
     private static final String TAG = MainActivity.class.getSimpleName();
-    private static final String videoUrl = "http://your_video_url";
-    private static final String videoId = "0";
+    private static final String videoUrl = "https://s3.amazonaws.com/colortv-testapp-data/0001.mp4";
+    private static final String videoId = "0001";
 
     private ColorTvAdListener loadAdListener = new ColorTvAdListener() {
 
@@ -66,7 +68,7 @@ public class MainActivity extends Activity {
 
     private void initViews() {
         Button showDiscoveryCenterButton = (Button) findViewById(R.id.btnShowDiscoveryCenter);
-        Button showAppFeatureButton= (Button) findViewById(R.id.btnShowAppFeature);
+        Button showAppFeatureButton = (Button) findViewById(R.id.btnShowAppFeature);
         Button showDirectEngagementButton = (Button) findViewById(R.id.btnShowDirectEngagement);
         Button showVideoButton = (Button) findViewById(R.id.btnShowVideo);
         Button showContentRecommendationButton = (Button) findViewById(R.id.btnShowContentRecommendation);
@@ -105,10 +107,12 @@ public class MainActivity extends Activity {
             }
         };
 
-        showDiscoveryCenterButton.setOnClickListener(buttonClickListener);
-        showAppFeatureButton.setOnClickListener(buttonClickListener);
-        showDirectEngagementButton.setOnClickListener(buttonClickListener);
-        showVideoButton.setOnClickListener(buttonClickListener);
+        if (isTvDevice()) {
+            showDiscoveryCenterButton.setOnClickListener(buttonClickListener);
+            showAppFeatureButton.setOnClickListener(buttonClickListener);
+            showDirectEngagementButton.setOnClickListener(buttonClickListener);
+            showVideoButton.setOnClickListener(buttonClickListener);
+        }
         showContentRecommendationButton.setOnClickListener(buttonClickListener);
     }
 
@@ -117,5 +121,9 @@ public class MainActivity extends Activity {
         super.onDestroy();
         ColorTvSdk.clearOnCurrencyEarnedListeners();
         ColorTvSdk.onDestroy();
+    }
+
+    public boolean isTvDevice() {
+        return ((UiModeManager) getSystemService(UI_MODE_SERVICE)).getCurrentModeType() == Configuration.UI_MODE_TYPE_TELEVISION;
     }
 }

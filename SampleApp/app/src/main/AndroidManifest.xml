@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main">
+            android:label="@string/title_activity_main"
+            android:screenOrientation="landscape">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,8 +28,10 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VideoActivity" />
-        <activity android:name=".ExoPlayerVideoActivity" />
+        <activity android:name=".VideoActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".ExoPlayerVideoActivity"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>
