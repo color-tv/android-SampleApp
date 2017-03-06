@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.colortv.demo">
+    package="com.colortv.sample">
 
     <uses-feature
         android:name="android.hardware.touchscreen"
@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.colortv.sample.MainActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="landscape">
 
@@ -28,9 +28,9 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VideoActivity"
+        <activity android:name="com.colortv.sample.VideoActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".ExoPlayerVideoActivity"
+        <activity android:name="com.colortv.sample.ExoPlayerVideoActivity"
             android:screenOrientation="landscape" />
     </application>
 

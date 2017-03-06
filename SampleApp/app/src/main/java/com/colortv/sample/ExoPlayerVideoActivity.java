@@ -1,4 +1,4 @@
-package com.colortv.demo;
+package com.colortv.sample;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.colortv.android.ColorTvContentRecommendationListener;
-import com.colortv.android.ColorTvError;
-import com.colortv.android.ColorTvSdk;
+import com.colortv.android.api.ColorTvError;
+import com.colortv.android.api.ColorTvSdk;
+import com.colortv.android.api.controller.ColorTvRecommendationsController;
+import com.colortv.android.api.controller.ColorTvVideoTrackingController;
+import com.colortv.android.api.listener.ColorTvContentRecommendationListener;
+import com.colortv.android.api.storage.ColorTvContentRecommendationConfig.Device;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
@@ -34,6 +37,8 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
+import java.util.Map;
+
 public class ExoPlayerVideoActivity extends Activity {
 
     private static final String TAG = ExoPlayerVideoActivity.class.getSimpleName();
@@ -41,12 +46,15 @@ public class ExoPlayerVideoActivity extends Activity {
     private SimpleExoPlayerView simpleExoPlayerView;
     private String videoId;
     private String currentPlacement = "TestContent";
+    private ColorTvRecommendationsController recommendationsController;
+    private ColorTvVideoTrackingController videoTrackingController;
 
     private ColorTvContentRecommendationListener loadContentRecommendationListener = new ColorTvContentRecommendationListener() {
 
         @Override
         public void onLoaded(String placement) {
             currentPlacement = placement;
+            recommendationsController.showRecommendationCenter(currentPlacement);
         }
 
         @Override
@@ -61,19 +69,18 @@ public class ExoPlayerVideoActivity extends Activity {
         }
 
         @Override
-        public void onExpired(String placement) {
-            Log.d(TAG, "ContentRecommendation has expired for placement: " + placement);
-            ColorTvSdk.loadContentRecommendation(placement, videoId);
-        }
-
-        @Override
-        public void onContentChosen(String videoId, String videoUrl) {
-            super.onContentChosen(videoId, videoUrl);
+        public void onContentChosen(String videoId, String videoUrl, Map<String, String> videoParams) {
             Intent intent = new Intent(ExoPlayerVideoActivity.this, ExoPlayerVideoActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.putExtra(MainActivity.VIDEO_URL, videoUrl);
             intent.putExtra(MainActivity.VIDEO_ID, videoId);
             startActivity(intent);
+        }
+
+        @Override
+        public void onExpired(String placement) {
+            Log.d(TAG, "ContentRecommendation has expired for placement: " + placement);
+            recommendationsController.load(placement, videoId);
         }
     };
 
@@ -97,7 +104,7 @@ public class ExoPlayerVideoActivity extends Activity {
         @Override
         public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
             if (playbackState == ExoPlayer.STATE_ENDED) {
-                ColorTvSdk.showContentRecommendation(currentPlacement);
+                recommendationsController.showRecommendationCenter(currentPlacement);
             }
         }
 
@@ -118,14 +125,18 @@ public class ExoPlayerVideoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo);
 
+        recommendationsController = ColorTvSdk.getRecommendationsController();
+        recommendationsController.registerListener(loadContentRecommendationListener);
+        recommendationsController.load(currentPlacement, videoId);
+        recommendationsController.getConfig().setItemLayout(Device.TV, R.layout.custom_item_layout);
+        videoTrackingController = ColorTvSdk.getVideoTrackingController();
+
         final String videoUrl = getIntent().getExtras().getString(MainActivity.VIDEO_URL);
         videoId = getIntent().getExtras().getString(MainActivity.VIDEO_ID);
         simpleExoPlayerView = (SimpleExoPlayerView) findViewById(R.id.exoVideo);
 
         initExoPlayer();
         loadVideo(videoUrl);
-        ColorTvSdk.registerContentRecommendationListener(loadContentRecommendationListener);
-        ColorTvSdk.loadContentRecommendation(currentPlacement, videoId);
     }
 
     private void loadVideo(String videoUrl) {
@@ -155,8 +166,8 @@ public class ExoPlayerVideoActivity extends Activity {
                 simpleExoPlayerView.showController();
             }
         });
-        ColorTvSdk.setVideoIdForPlayerTracking(videoId);
-        ColorTvSdk.setExoPlayerToTrackVideo(simpleExoPlayer);
+        videoTrackingController.setVideoIdForPlayerTracking(videoId);
+        videoTrackingController.setExoPlayerToTrackVideo(simpleExoPlayer);
     }
 
     @Override

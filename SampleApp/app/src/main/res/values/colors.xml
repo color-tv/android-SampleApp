@@ -2,16 +2,17 @@
 <resources>
     <color name="video">#c492db</color>
     <color name="video_focused">#b96fdb</color>
-
     <color name="discovery">#E35050</color>
     <color name="discovery_focused">#ff3030</color>
-
     <color name="interstitial">#FEC550</color>
     <color name="interstitial_focused">#feb41b</color>
-
     <color name="engagement">#AFD739</color>
     <color name="engagement_focused">#b6f00b</color>
-
     <color name="content_recommendation">#79ccec</color>
     <color name="content_recommendation_focused">#42caff</color>
+
+    <color name="black_32">#52000000</color>
+    <color name="black_56">#90000000</color>
+    <color name="black_77">#c6000000</color>
+    <color name="yellow">#f2c913</color>
 </resources>

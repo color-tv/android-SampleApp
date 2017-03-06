@@ -1,4 +1,4 @@
-package com.colortv.demo;
+package com.colortv.sample;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,10 +8,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.VideoView;
 
-import com.colortv.android.ColorTvContentRecommendationListener;
-import com.colortv.android.ColorTvError;
-import com.colortv.android.ColorTvSdk;
-import com.colortv.android.TrackingEventType;
+import com.colortv.android.api.ColorTvError;
+import com.colortv.android.api.ColorTvSdk;
+import com.colortv.android.api.ColorTvTrackingEventType;
+import com.colortv.android.api.controller.ColorTvRecommendationsController;
+import com.colortv.android.api.controller.ColorTvVideoTrackingController;
+import com.colortv.android.api.listener.ColorTvContentRecommendationListener;
+
+import java.util.Map;
 
 public class VideoActivity extends Activity {
 
@@ -19,6 +23,8 @@ public class VideoActivity extends Activity {
     private VideoView videoView;
     private String videoId;
     private String currentPlacement = "TestContent";
+    private ColorTvRecommendationsController recommendationsController;
+    private ColorTvVideoTrackingController videoTrackingController;
 
     private ColorTvContentRecommendationListener loadContentRecommendationListener = new ColorTvContentRecommendationListener() {
 
@@ -39,20 +45,20 @@ public class VideoActivity extends Activity {
         }
 
         @Override
-        public void onExpired(String placement) {
-            Log.d(TAG, "ContentRecommendation has expired for placement: " + placement);
-            ColorTvSdk.loadContentRecommendation(placement, videoId);
-        }
-
-        @Override
-        public void onContentChosen(String videoId, String videoUrl) {
-            super.onContentChosen(videoId, videoUrl);
+        public void onContentChosen(String videoId, String videoUrl, Map<String, String> videoParams) {
             Intent intent = new Intent(VideoActivity.this, VideoActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.putExtra(MainActivity.VIDEO_URL, videoUrl);
             intent.putExtra(MainActivity.VIDEO_ID, videoId);
             startActivity(intent);
         }
+
+        @Override
+        public void onExpired(String placement) {
+            Log.d(TAG, "ContentRecommendation has expired for placement: " + placement);
+            recommendationsController.load(placement, videoId);
+        }
+
     };
 
     @Override
@@ -60,24 +66,27 @@ public class VideoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
+        recommendationsController = ColorTvSdk.getRecommendationsController();
+        recommendationsController.registerListener(loadContentRecommendationListener);
+        recommendationsController.load(currentPlacement, videoId);
+        videoTrackingController = ColorTvSdk.getVideoTrackingController();
+
         final String videoUrl = getIntent().getExtras().getString(MainActivity.VIDEO_URL);
         videoId = getIntent().getExtras().getString(MainActivity.VIDEO_ID);
         videoView = (VideoView) findViewById(R.id.vvVideoPlay);
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                ColorTvSdk.reportVideoTrackingEvent(videoId, TrackingEventType.VIDEO_COMPLETED, videoView.getDuration());
-                ColorTvSdk.showContentRecommendation(currentPlacement);
+                videoTrackingController.reportVideoTrackingEvent(videoId, ColorTvTrackingEventType.VIDEO_COMPLETED, videoView.getDuration());
+                recommendationsController.showRecommendationCenter(currentPlacement);
             }
         });
         videoView.setVideoURI(Uri.parse(videoUrl));
-        ColorTvSdk.registerContentRecommendationListener(loadContentRecommendationListener);
-        ColorTvSdk.loadContentRecommendation(currentPlacement, videoId);
     }
 
     @Override
     public void onBackPressed() {
-        ColorTvSdk.reportVideoTrackingEvent(videoId, TrackingEventType.VIDEO_STOPPED, videoView.getDuration());
+        videoTrackingController.reportVideoTrackingEvent(videoId, ColorTvTrackingEventType.VIDEO_STOPPED, videoView.getDuration());
         super.onBackPressed();
     }
 
@@ -85,9 +94,9 @@ public class VideoActivity extends Activity {
     public void onResume() {
         super.onResume();
         if(!videoView.isPlaying()) {
-            ColorTvSdk.reportVideoTrackingEvent(videoId, TrackingEventType.VIDEO_RESUMED, videoView.getCurrentPosition());
+            videoTrackingController.reportVideoTrackingEvent(videoId, ColorTvTrackingEventType.VIDEO_RESUMED, videoView.getCurrentPosition());
         } else {
-            ColorTvSdk.reportVideoTrackingEvent(videoId, TrackingEventType.VIDEO_STARTED, 0);
+            videoTrackingController.reportVideoTrackingEvent(videoId, ColorTvTrackingEventType.VIDEO_STARTED, 0);
         }
         videoView.start();
     }
@@ -96,7 +105,7 @@ public class VideoActivity extends Activity {
     public void onPause() {
         super.onPause();
         videoView.pause();
-        ColorTvSdk.reportVideoTrackingEvent(videoId, TrackingEventType.VIDEO_PAUSED, videoView.getCurrentPosition());
+        videoTrackingController.reportVideoTrackingEvent(videoId, ColorTvTrackingEventType.VIDEO_PAUSED, videoView.getCurrentPosition());
     }
 
 }
