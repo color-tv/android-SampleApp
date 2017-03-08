@@ -46,8 +46,8 @@ public class ExoPlayerVideoActivity extends Activity {
     private SimpleExoPlayerView simpleExoPlayerView;
     private String videoId;
     private String currentPlacement = "TestContent";
-    private ColorTvRecommendationsController recommendationsController;
     private ColorTvVideoTrackingController videoTrackingController;
+    protected ColorTvRecommendationsController recommendationsController;
 
     private ColorTvContentRecommendationListener loadContentRecommendationListener = new ColorTvContentRecommendationListener() {
 
@@ -128,7 +128,6 @@ public class ExoPlayerVideoActivity extends Activity {
         recommendationsController = ColorTvSdk.getRecommendationsController();
         recommendationsController.registerListener(loadContentRecommendationListener);
         recommendationsController.load(currentPlacement, videoId);
-        recommendationsController.getConfig().setItemLayout(Device.TV, R.layout.custom_item_layout);
         videoTrackingController = ColorTvSdk.getVideoTrackingController();
 
         final String videoUrl = getIntent().getExtras().getString(MainActivity.VIDEO_URL);

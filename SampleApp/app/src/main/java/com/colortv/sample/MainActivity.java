@@ -86,6 +86,9 @@ public class MainActivity extends Activity {
                          * If you want to use Google ExoPlayer change
                          * VideoActivity.class to ExoPlayerVideoActivity.class
                          * Both classes are examples of usage (including reporting events)
+                         *
+                         * CustomRecommendationCenterActivity is a showcase of customizing
+                         * Recommendation Center using the ColorTvContentRecommendationConfig
                          */
                         Intent intent = new Intent(MainActivity.this, ExoPlayerVideoActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

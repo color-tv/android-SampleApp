@@ -11,8 +11,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/demo_app_icon"
         android:banner="@drawable/demo_app_banner"
+        android:icon="@drawable/demo_app_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -28,9 +28,14 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.colortv.sample.VideoActivity"
+        <activity
+            android:name="com.colortv.sample.VideoActivity"
             android:screenOrientation="landscape" />
-        <activity android:name="com.colortv.sample.ExoPlayerVideoActivity"
+        <activity
+            android:name="com.colortv.sample.ExoPlayerVideoActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.colortv.sample.CustomRecommendationCenterActivity"
             android:screenOrientation="landscape" />
     </application>
 

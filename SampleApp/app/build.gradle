@@ -11,7 +11,7 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        applicationId "com.colortv.demo"
+        applicationId "com.colortv.sample"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
@@ -31,10 +31,10 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support:leanback-v17:25.1.0'
-    compile 'com.google.android.gms:play-services-ads:9.6.1'
-    compile 'com.google.android.gms:play-services-location:9.6.1'
-    compile 'com.colortv:android-sdk:3.4.1'
-    compile 'com.google.android.exoplayer:exoplayer:r2.1.1'
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:leanback-v17:25.2.0'
+    compile 'com.google.android.gms:play-services-ads:10.2.0'
+    compile 'com.google.android.gms:play-services-location:10.2.0'
+    compile 'com.google.android.exoplayer:exoplayer:r2.2.0'
+    compile 'com.colortv:android-sdk:4.0.0'
 }
