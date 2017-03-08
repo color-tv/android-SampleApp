@@ -672,7 +672,7 @@ This method is used to set the number of rows for specified device type.
 
 This method is used to set a custom font for specified device type. It only works if you don't use custom item layout.
 
-####setSnapEnabled(boolean enabled)`
+####setSnapEnabled(boolean enabled)
 
 This method is used to set snapping RecyclerView elements to the center of the screen. Available only on Mobile. The value is forced to false if item layout is not default.
 
