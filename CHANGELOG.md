@@ -1,5 +1,13 @@
 # Android SDK changelog
 
+## 4.0.0
+- Added UpNext functionality
+- Added Headless Recommendations and other customization options
+- Changed the interface of the SDK
+- Added missing documentation to public API
+- UI improvements
+- Bugfixes
+
 ## 3.4.1
 - Major bugfix concerning ad delivery
 - Small UI tweaks
