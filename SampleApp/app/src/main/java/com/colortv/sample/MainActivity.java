@@ -1,4 +1,4 @@
-package com.colortv.demo;
+package com.colortv.sample;
 
 import android.app.Activity;
 import android.app.UiModeManager;
@@ -10,11 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.colortv.android.ColorTvAdListener;
-import com.colortv.android.ColorTvError;
-import com.colortv.android.ColorTvSdk;
-import com.colortv.android.OnCurrencyEarnedListener;
-import com.colortv.android.Placements;
+import com.colortv.android.api.ColorTvError;
+import com.colortv.android.api.ColorTvPlacements;
+import com.colortv.android.api.ColorTvSdk;
+import com.colortv.android.api.controller.ColorTvAdController;
+import com.colortv.android.api.listener.ColorTvAdListener;
+import com.colortv.android.api.listener.ColorTvOnCurrencyEarnedListener;
 
 public class MainActivity extends Activity {
 
@@ -23,27 +24,35 @@ public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final String videoUrl = "https://s3.amazonaws.com/colortv-testapp-data/0001.mp4";
     private static final String videoId = "0001";
+    private ColorTvAdController adController;
 
     private ColorTvAdListener loadAdListener = new ColorTvAdListener() {
 
         @Override
-        public void onAdLoaded(String placement) {
-            ColorTvSdk.showAd(placement);
+        public void onLoaded(String placement) {
+            adController.load(placement);
         }
 
         @Override
-        public void onAdError(String placement, ColorTvError error) {
-            Log.e(TAG, "Error while fetching ad for placement " + placement + " - " + error.getErrorCode().name() + ": " + error.getErrorMessage());
+        public void onError(String placement, ColorTvError colorTvError) {
+            Log.e(TAG, "Error while fetching ad for placement " + placement + " - " + colorTvError.getErrorCode().name() + ": " + colorTvError.getErrorMessage());
         }
 
         @Override
-        public void onAdClosed(String placement, boolean watched) {
+        public void onExpired(String placement) {
+            Log.d(TAG, "Ad has expired for placement: " + placement);
+        }
+
+        @Override
+        public void onClosed(String placement, boolean watched) {
             Log.d(TAG, "Ad has closed for placement: " + placement + " and watched: " + watched);
         }
+    };
 
+    private ColorTvOnCurrencyEarnedListener currencyEarnedListener = new ColorTvOnCurrencyEarnedListener() {
         @Override
-        public void onAdExpired(String placement) {
-            Log.d(TAG, "Ad has expired for placement: " + placement);
+        public void onCurrencyEarned(String placement, int currencyAmount, String currencyType) {
+            Toast.makeText(MainActivity.this, "Received " + currencyAmount + " x " + currencyType, Toast.LENGTH_LONG).show();
         }
     };
 
@@ -51,18 +60,13 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initViews();
 
         ColorTvSdk.setDebugMode(true);
         ColorTvSdk.init(this, "08271056-5211-4ae6-bf1c-12e344455383");
-        ColorTvSdk.addOnCurrencyEarnedListener(new OnCurrencyEarnedListener() {
-            @Override
-            public void onCurrencyEarned(String placement, int currencyAmount, String currencyType) {
-                Toast.makeText(MainActivity.this, "Received " + currencyAmount + " x " + currencyType, Toast.LENGTH_LONG).show();
-            }
-        });
-        ColorTvSdk.registerAdListener(loadAdListener);
+        adController = ColorTvSdk.getAdController();
+        adController.addOnCurrencyEarnedListener(currencyEarnedListener);
+        adController.registerListener(loadAdListener);
         ColorTvSdk.onCreate();
     }
 
@@ -75,13 +79,16 @@ public class MainActivity extends Activity {
 
         View.OnClickListener buttonClickListener = new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
+            public void onClick(View view) {
+                switch (view.getId()) {
                     case R.id.btnShowContentRecommendation:
                         /**
                          * If you want to use Google ExoPlayer change
                          * VideoActivity.class to ExoPlayerVideoActivity.class
                          * Both classes are examples of usage (including reporting events)
+                         *
+                         * CustomRecommendationCenterActivity is a showcase of customizing
+                         * Recommendation Center using the ColorTvContentRecommendationConfig
                          */
                         Intent intent = new Intent(MainActivity.this, ExoPlayerVideoActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -91,16 +98,16 @@ public class MainActivity extends Activity {
                         break;
                     //The placements below were configured in the dashboard to only show specific ad types
                     case R.id.btnShowDiscoveryCenter:
-                        ColorTvSdk.loadAd(Placements.PAUSE);
+                        adController.load(ColorTvPlacements.PAUSE);
                         break;
                     case R.id.btnShowAppFeature:
-                        ColorTvSdk.loadAd(Placements.IN_APP_PURCHASE);
+                        adController.load(ColorTvPlacements.IN_APP_PURCHASE);
                         break;
                     case R.id.btnShowDirectEngagement:
-                        ColorTvSdk.loadAd(Placements.STAGE_OPEN);
+                        adController.load(ColorTvPlacements.STAGE_OPEN);
                         break;
                     case R.id.btnShowVideo:
-                        ColorTvSdk.loadAd(Placements.BETWEEN_LEVELS);
+                        adController.load(ColorTvPlacements.BETWEEN_LEVELS);
                         break;
                 }
 
@@ -119,7 +126,7 @@ public class MainActivity extends Activity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        ColorTvSdk.clearOnCurrencyEarnedListeners();
+        adController.clearOnCurrencyEarnedListeners();
         ColorTvSdk.onDestroy();
     }
 
