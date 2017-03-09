@@ -676,7 +676,7 @@ This method is used to set a custom font for specified device type. It only work
 
 This method is used to set snapping RecyclerView elements to the center of the screen. Available only on Mobile. The value is forced to false if item layout is not default.
 
-- true - the height of the items is forced to `MATCH_PARENT` and the width is calculated by the following formula: `ITEM_HEIGHT*0.45`. If you change the height of the RecyclerView in the custom grid layout we recommend you to disable snapping. Video preview is enabled and will be shown if available
+- true - the height of the items is forced to `MATCH_PARENT` and the width is calculated by the following formula: `RECYCLER_VIEW_HEIGHT*0.45`. Video preview is enabled and will be shown if available. If you change the height of the RecyclerView in the custom grid layout we recommend you to disable snapping
 - false - the height and the width of the items is set to be as defined in layout. Video preview is disabled and will not be shown whether it is available or not
 
 ####resetToDefault()
@@ -684,4 +684,4 @@ This method is used to set snapping RecyclerView elements to the center of the s
 This method is used to reset all settings to default.
 
 
-For an example of the usage all of the above methods, check our sample app: [Usage of custom recommendation center](https://github.com/color-tv/android-SampleApp/blob/master/SampleApp/app/src/main/java/com/colortv/demo/CustomRecommendationCenterActivity.java)
+For an example of the usage all of the above methods, check our [usage of custom recommendation center](https://github.com/color-tv/android-SampleApp/blob/master/SampleApp/app/src/main/java/com/colortv/demo/CustomRecommendationCenterActivity.java)
