@@ -8,13 +8,12 @@
     </style>
 
     <style name="ButtonStyle" parent="Widget.AppCompat.Button">
-        <item name="android:padding">8dp</item>
+        <item name="android:padding">4dp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_marginBottom">16dp</item>
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
         <item name="android:minHeight">24dp</item>
-        <item name="android:textSize">14sp</item>
         <item name="android:textAllCaps">true</item>
     </style>
 

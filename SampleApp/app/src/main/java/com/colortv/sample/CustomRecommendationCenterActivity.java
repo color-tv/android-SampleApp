@@ -18,8 +18,18 @@ public class CustomRecommendationCenterActivity extends ExoPlayerVideoActivity {
     }
 
     private void setRecommendationCenterConfiguration() {
+        recommendationConfig.resetToDefault();
+
         recommendationConfig.setItemLayout(Device.TV, R.layout.custom_item_layout);
-        recommendationConfig.setItemLayout(Device.MOBILE, R.layout.custom_item_layout);
+        recommendationConfig.setGridLayout(Device.TV, R.layout.custom_grid_layout);
+        recommendationConfig.setRowCount(Device.TV, 1);
+
+        recommendationConfig.setItemLayout(Device.MOBILE, R.layout.custom_mobile_item_layout);
+        recommendationConfig.setGridLayout(Device.MOBILE, R.layout.custom_mobile_grid_layout);
+
+        recommendationConfig.setItemLayout(Device.TABLET, R.layout.custom_item_layout);
+        recommendationConfig.setGridLayout(Device.TABLET, R.layout.custom_mobile_grid_layout);
+        recommendationConfig.setRowCount(Device.TABLET, 1);
     }
 
 }

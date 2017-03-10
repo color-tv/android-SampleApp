@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="311dp"
-    android:layout_height="236dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:clickable="true"
     android:descendantFocusability="beforeDescendants"
     android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:ignore="UselessParent">
 
     <RelativeLayout
         android:layout_width="298dp"
         android:layout_height="223dp"
         android:layout_gravity="center"
+        android:layout_margin="5dp"
         android:elevation="1dp"
+        android:background="@color/item_background"
         android:orientation="horizontal">
 
         <!-- Hacky wraper which allows video to be bigger than parent -->
