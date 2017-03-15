@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">8dp</dimen>
     <dimen name="btn_margin_left">8dp</dimen>
     <item name="recyclerHeight" format="integer" type="dimen">-1</item>
+    <dimen name="ytCardHeight">145dp</dimen>
+    <dimen name="ytCardWidth">250dp</dimen>
 </resources>

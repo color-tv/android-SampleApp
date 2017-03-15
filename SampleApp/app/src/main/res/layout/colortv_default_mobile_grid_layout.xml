@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layoutContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:foregroundGravity="bottom"
+        android:gravity="bottom">
 
-        <RelativeLayout
-            android:id="@+id/ctv_recyclerViewContainer"
+        <!--
+            must be match_parent if there is no custom item layout
+
+            height must be match_parent or specified in dp -
+            wrap_content causes 0 height due to scalling width
+
+        -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ctv_rvGrid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:foregroundGravity="center_vertical"
-            android:background="@color/color_tv_dark_mobile_grid_center_background"/>
+            android:background="@color/color_tv_dark_mobile_grid_center_background"
+            android:foregroundGravity="bottom"
+            android:focusable="false" />
 
     </RelativeLayout>
 
@@ -27,6 +37,6 @@
         android:elevation="2dp"
         android:focusable="false"
         android:src="@drawable/color_tv_image_favorite"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
 </RelativeLayout>

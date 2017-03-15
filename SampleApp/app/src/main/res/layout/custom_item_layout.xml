@@ -14,8 +14,8 @@
         android:layout_height="223dp"
         android:layout_gravity="center"
         android:layout_margin="5dp"
-        android:elevation="1dp"
         android:background="@color/item_background"
+        android:elevation="1dp"
         android:orientation="horizontal">
 
         <!-- Hacky wraper which allows video to be bigger than parent -->
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:src="@drawable/mask_background" />
+            android:src="@drawable/mask_background_selector" />
 
         <FrameLayout
             android:id="@+id/ctv_autoPlayTimerContainer"
@@ -107,8 +107,7 @@
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_marginRight="4dp"
-                    android:src="@drawable/icon_clock_white"
-                    android:tint="@color/genre_background_selector" />
+                    android:src="@drawable/clock_button_selector" />
 
                 <TextView
                     android:id="@+id/ctv_tvDuration"

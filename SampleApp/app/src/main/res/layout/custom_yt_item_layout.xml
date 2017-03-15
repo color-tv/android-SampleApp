@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="240dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:clickable="true"
+    android:descendantFocusability="beforeDescendants"
+    android:focusable="true"
+    tools:ignore="UselessParent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="@android:color/white"
+        android:elevation="1dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="230dp">
+
+            <FrameLayout
+                android:id="@+id/ctv_videoPreviewContainer"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/ctv_ivVideoThumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <RelativeLayout
+            android:id="@+id/ctv_show"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/shadow_selector" />
+
+            <TextView
+                android:id="@+id/ctv_tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/llDuration"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/white_transparent_selector"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/ctv_tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ctv_tvTitle"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/white_transparent_selector"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/ctv_tvDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="8dp"
+                android:background="@drawable/black_transparent_selector"
+                android:includeFontPadding="false"
+                android:padding="2dp"
+                android:textColor="@color/white_transparent_selector"
+                android:textSize="7sp" />
+
+            <FrameLayout
+                android:id="@+id/ctv_autoPlayTimerContainer"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="8dp" />
+
+        </RelativeLayout>
+
+
+        <FrameLayout
+            android:id="@+id/ctv_flUnfocusedOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/ctv_ivBlackMask"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@color/color_tv_black_mask" />
+
+            <ImageView
+                android:id="@+id/ctv_ivPlayButton"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:src="@drawable/color_tv_icon_watch_now" />
+        </FrameLayout>
+
+    </FrameLayout>
+
+</FrameLayout>

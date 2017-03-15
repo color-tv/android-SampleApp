@@ -1,3 +1,5 @@
 <resources>
     <item name="recyclerHeight" format="integer" type="dimen">-2</item>
+    <dimen name="ytCardHeight">185dp</dimen>
+    <dimen name="ytCardWidth">300dp</dimen>
 </resources>

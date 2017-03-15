@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:exitFadeDuration="@integer/defaultAnimationTime">
+    <item android:state_selected="true">
+        <bitmap android:src="@drawable/color_tv_icon_watch_now"
+            android:tint="@android:color/transparent" />
+    </item>
+    <item>
+        <bitmap android:src="@drawable/color_tv_icon_watch_now"
+            android:tint="@color/color_tv_white" />
+    </item>
+</selector>

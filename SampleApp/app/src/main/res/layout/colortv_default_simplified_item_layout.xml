@@ -141,8 +141,8 @@
                 android:paddingLeft="6dp"
                 android:paddingRight="6dp"
                 android:paddingTop="2dp"
-                android:textColor="@android:color/white"
                 android:textAllCaps="true"
+                android:textColor="@android:color/white"
                 android:textSize="10sp"
                 android:visibility="gone" />
         </LinearLayout>

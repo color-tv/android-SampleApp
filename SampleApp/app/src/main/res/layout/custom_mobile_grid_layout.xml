@@ -10,12 +10,13 @@
         android:foregroundGravity="bottom"
         android:gravity="bottom">
 
-        <FrameLayout
-            android:id="@+id/ctv_recyclerViewContainer"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ctv_rvGrid"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/recyclerHeight"
-            android:layout_gravity="bottom|left"
-            android:focusable="false" />
+            android:layout_height="wrap_content"
+            android:background="@color/color_tv_dark_mobile_grid_center_background"
+            android:focusable="false"
+            android:foregroundGravity="bottom" />
 
     </RelativeLayout>
 

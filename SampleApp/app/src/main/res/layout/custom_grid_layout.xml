@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layoutContainer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/ctv_featuredUnitLayoutContainer"
@@ -15,24 +15,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@id/ctv_featuredUnitLayoutContainer" >
+        android:layout_toRightOf="@id/ctv_featuredUnitLayoutContainer">
 
         <LinearLayout
             android:id="@+id/recommendations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/gray_dark" >
+            android:background="@color/gray_dark">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-normal"
+                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-normal"
                 android:text="RECOMMENDATIONS"
                 android:textColor="@android:color/white" />
 
@@ -40,18 +40,19 @@
                 android:id="@+id/ctv_ivGridClose"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_marginRight="4dp"
                 android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="4dp"
                 android:src="@drawable/ic_close_white_48dp" />
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/ctv_recyclerViewContainer"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ctv_rvGrid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/recommendations"
             android:layout_gravity="bottom|left"
+            android:layout_below="@id/recommendations"
             android:background="@color/gray"
+            android:focusable="false"
             android:maxHeight="480dp" />
     </RelativeLayout>
 

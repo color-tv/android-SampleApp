@@ -26,8 +26,8 @@
         android:maxHeight="516dp"
         android:paddingTop="18dp">
 
-        <FrameLayout
-            android:id="@+id/ctv_recyclerViewContainer"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ctv_rvGrid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|left"
