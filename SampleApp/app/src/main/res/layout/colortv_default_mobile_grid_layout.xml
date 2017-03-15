@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/ctv_recyclerViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:foregroundGravity="center_vertical"
+            android:background="@color/color_tv_dark_mobile_grid_center_background"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/ctv_ivFavoriteContainer"
+        android:layout_width="@dimen/color_tv_mobile_favorite_image_size"
+        android:layout_height="@dimen/color_tv_mobile_favorite_image_size"
+        android:layout_centerInParent="true"
+        android:background="@color/color_tv_white"
+        android:elevation="2dp"
+        android:focusable="false"
+        android:src="@drawable/color_tv_image_favorite"
+        android:visibility="gone" />
+
+</RelativeLayout>

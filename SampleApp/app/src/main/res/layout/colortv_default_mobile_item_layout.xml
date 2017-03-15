@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layout is not exactly the same as used default - different is in width and vertical division of
+    space - originally we resize width basing on RecyclerView height and multiplying it by 0.45,
+    additionally in tablet version width is divided by 2
+-->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="400dp"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:ignore="UselessParent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/color_tv_mobile_grid_item_margin"
+        android:layout_marginLeft="@dimen/color_tv_mobile_grid_item_margin"
+        android:layout_marginStart="@dimen/color_tv_mobile_grid_item_margin"
+        android:layout_marginTop="@dimen/color_tv_mobile_grid_item_margin"
+        android:background="@color/color_tv_dark_mobile_item"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/flThumbnailPart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <FrameLayout
+                android:id="@+id/ctv_videoPreviewContainer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/color_tv_mobile_preview_height"
+                android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/ctv_ivVideoThumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_tv_discovery_center_card_white"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/ctv_ivBlackMask"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@color/color_tv_black_mask" />
+
+            <ImageView
+                android:id="@+id/ctv_ivPlayButton"
+                android:layout_width="@dimen/color_tv_mobile_play_button_size"
+                android:layout_height="@dimen/color_tv_mobile_play_button_size"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:src="@drawable/color_tv_mobile_play_button" />
+
+            <FrameLayout
+                android:id="@+id/ctv_autoPlayTimerContainer"
+                android:layout_width="@dimen/color_tv_mobile_auto_play_size"
+                android:layout_height="@dimen/color_tv_mobile_auto_play_size"
+                android:layout_gravity="top|end"
+                android:layout_margin="@dimen/color_tv_mobile_content_margin" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:background="@drawable/color_tv_ripple"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/color_tv_mobile_content_margin"
+            android:paddingLeft="@dimen/color_tv_mobile_content_margin"
+            android:paddingRight="@dimen/color_tv_mobile_content_margin"
+            android:paddingTop="@dimen/color_tv_mobile_content_top_margin">
+
+            <LinearLayout
+                android:id="@+id/llFirstLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ctv_tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/color_tv_mobile_units_center_text_primary"
+                    android:textSize="@dimen/color_tv_mobile_title_size"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/ctv_ivFavoriteIcon"
+                    android:layout_width="@dimen/color_tv_mobile_favorite_button_size"
+                    android:layout_height="@dimen/color_tv_mobile_favorite_button_size"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/color_tv_mobile_content_margin"
+                    android:layout_marginStart="@dimen/color_tv_mobile_content_margin"
+                    android:src="@drawable/color_tv_icon_heart" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/ctv_tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/llFirstLine"
+                android:layout_marginTop="@dimen/color_tv_mobile_content_top_margin"
+                android:ellipsize="end"
+                android:minLines="1"
+                android:textColor="@color/color_tv_mobile_units_center_text_primary"
+                android:textSize="@dimen/color_tv_mobile_description_size" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

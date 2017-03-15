@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="409dp"
+    android:layout_height="236dp"
+    android:clickable="true"
+    android:descendantFocusability="beforeDescendants"
+    android:focusable="true"
+    tools:ignore="UselessParent">
+
+    <RelativeLayout
+        android:id="@+id/ctv_card"
+        android:layout_width="@dimen/color_tv_simplified_item_width"
+        android:layout_height="@dimen/color_tv_simplified_item_height"
+        android:layout_gravity="center"
+        android:background="@android:color/white"
+        android:elevation="1dp">
+
+        <FrameLayout
+            android:id="@+id/ctv_videoPreviewContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+
+        <ImageView
+            android:id="@+id/ctv_ivVideoThumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/color_tv_simplified_content_recommendation_gradient_top" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="128dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/color_tv_simplified_content_recommendation_gradient_bottom" />
+
+        <FrameLayout
+            android:id="@+id/ctv_flUnfocusedOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ctv_ivBlackMask"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@color/color_tv_black_mask" />
+
+            <ImageView
+                android:id="@+id/ctv_ivPlayButton"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:src="@drawable/color_tv_icon_watch_now" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/ctv_autoPlayTimerContainer"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginStart="12dp">
+
+            <LinearLayout
+                android:id="@+id/llDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="1dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/ctv_ivClock"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/color_tv_icon_clock_white" />
+
+                <TextView
+                    android:id="@+id/ctv_tvDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="7sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/ctv_tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/llDuration"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@android:color/white"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ctv_llGenres"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="8dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/ctv_tvGenre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/color_tv_button_content_genre_simplified"
+                android:maxLines="1"
+                android:paddingBottom="2dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:paddingTop="2dp"
+                android:textColor="@android:color/white"
+                android:textAllCaps="true"
+                android:textSize="10sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>
