@@ -23,12 +23,12 @@
         android:paddingTop="@dimen/activity_vertical_margin">
 
         <Button
-            android:id="@+id/btnShowContentRecommendation"
+            android:id="@+id/btnShowRecommendationCenter"
             style="@style/ButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/button_discovery"
-            android:text="Content Recommendation" />
+            android:text="@string/recommendation_center" />
 
     </LinearLayout>
 

@@ -115,5 +115,7 @@
                     android:visibility="gone" />
             </LinearLayout>
         </RelativeLayout>
+
     </FrameLayout>
+
 </LinearLayout>

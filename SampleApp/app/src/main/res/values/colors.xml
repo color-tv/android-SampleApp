@@ -18,14 +18,4 @@
     <color name="gray">#c9bcbcbc</color>
     <color name="gray_dark">#c9747474</color>
     <color name="item_background">#686868</color>
-
-
-    <color name="black_opaque">#AA000000</color>
-    <color name="black">#c6000000</color>
-    <color name="white">#FFFFFF</color>
-    <color name="orange_transparent">#AAFADCA7</color>
-    <color name="orange">#FADCA7</color>
-    <color name="default_background">#3d3d3d</color>
-    <color name="background_selected">#464749</color>
-    <color name="genres">#f2c913</color>
 </resources>

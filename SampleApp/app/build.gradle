@@ -36,5 +36,5 @@ dependencies {
     compile 'com.google.android.gms:play-services-ads:10.2.0'
     compile 'com.google.android.gms:play-services-location:10.2.0'
     compile 'com.google.android.exoplayer:exoplayer:r2.2.0'
-    compile 'com.colortv:android-sdk:4.0.0'
+    compile 'com.colortv:android-sdk:4.1.0'
 }
