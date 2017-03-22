@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/ytCardWidth"
+    android:layout_height="@dimen/ytCardHeight"
+    android:layout_weight="1"
+    android:clickable="true"
+    android:descendantFocusability="beforeDescendants"
+    android:focusable="true"
+    tools:ignore="UselessParent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="@android:color/white"
+        android:elevation="1dp">
+
+        <ImageView
+            android:id="@+id/ctv_ivVideoThumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bordered_background"
+            android:padding="2dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/shadow" />
+
+            <TextView
+                android:id="@+id/ctv_tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/llDuration"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/ctv_tvDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="8dp"
+                android:background="@color/black_56"
+                android:includeFontPadding="false"
+                android:padding="2dp"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+
+            <FrameLayout
+                android:id="@+id/ctv_autoPlayTimerContainer"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="8dp" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</FrameLayout>

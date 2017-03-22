@@ -54,7 +54,6 @@ public class ExoPlayerVideoActivity extends Activity {
         @Override
         public void onLoaded(String placement) {
             currentPlacement = placement;
-            recommendationsController.showRecommendationCenter(currentPlacement);
         }
 
         @Override

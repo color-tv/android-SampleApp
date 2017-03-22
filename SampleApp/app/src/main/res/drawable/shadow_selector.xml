@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android"
     android:exitFadeDuration="@integer/defaultAnimationTime">
-    <item android:color="@color/yellow"
-        android:state_selected="true" />
-    <item android:color="@android:color/white" />
+    <item android:drawable="@drawable/shadow" android:state_selected="true" />
+    <item android:drawable="@android:color/transparent" />
 </selector>

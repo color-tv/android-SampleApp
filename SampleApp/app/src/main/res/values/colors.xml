@@ -15,4 +15,7 @@
     <color name="black_56">#90000000</color>
     <color name="black_77">#c6000000</color>
     <color name="yellow">#f2c913</color>
+    <color name="gray">#c9bcbcbc</color>
+    <color name="gray_dark">#c9747474</color>
+    <color name="item_background">#686868</color>
 </resources>

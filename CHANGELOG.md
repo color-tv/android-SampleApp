@@ -1,5 +1,10 @@
 # Android SDK changelog
 
+## 4.1.0
+- Added onContentRecommendationClosed and onUpNextClosed callbacks
+- Added video preview on UpNext
+- Bugfixes
+
 ## 4.0.0
 - Added UpNext functionality
 - Added Headless Recommendations and other customization options

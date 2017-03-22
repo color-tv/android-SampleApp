@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="311dp"
-    android:layout_height="236dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:clickable="true"
     android:descendantFocusability="beforeDescendants"
     android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:ignore="UselessParent">
 
     <RelativeLayout
         android:layout_width="298dp"
         android:layout_height="223dp"
         android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="@color/item_background"
         android:elevation="1dp"
         android:orientation="horizontal">
 
@@ -38,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:src="@drawable/mask_background" />
+            android:src="@drawable/mask_background_selector" />
 
         <FrameLayout
             android:id="@+id/ctv_autoPlayTimerContainer"
@@ -104,8 +107,7 @@
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_marginRight="4dp"
-                    android:src="@drawable/icon_clock_white"
-                    android:tint="@color/genre_background_selector" />
+                    android:src="@drawable/clock_button_selector" />
 
                 <TextView
                     android:id="@+id/ctv_tvDuration"
@@ -144,6 +146,9 @@
                         android:visibility="gone" />
                 </LinearLayout>
             </LinearLayout>
+
         </FrameLayout>
+
     </RelativeLayout>
+
 </FrameLayout>

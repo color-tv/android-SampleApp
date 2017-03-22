@@ -75,13 +75,13 @@ public class MainActivity extends Activity {
         Button showAppFeatureButton = (Button) findViewById(R.id.btnShowAppFeature);
         Button showDirectEngagementButton = (Button) findViewById(R.id.btnShowDirectEngagement);
         Button showVideoButton = (Button) findViewById(R.id.btnShowVideo);
-        Button showContentRecommendationButton = (Button) findViewById(R.id.btnShowContentRecommendation);
+        Button showContentRecommendationButton = (Button) findViewById(R.id.btnShowRecommendationCenter);
 
         View.OnClickListener buttonClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (view.getId()) {
-                    case R.id.btnShowContentRecommendation:
+                    case R.id.btnShowRecommendationCenter:
                         /**
                          * If you want to use Google ExoPlayer change
                          * VideoActivity.class to ExoPlayerVideoActivity.class
@@ -90,7 +90,7 @@ public class MainActivity extends Activity {
                          * CustomRecommendationCenterActivity is a showcase of customizing
                          * Recommendation Center using the ColorTvContentRecommendationConfig
                          */
-                        Intent intent = new Intent(MainActivity.this, ExoPlayerVideoActivity.class);
+                        Intent intent = new Intent(MainActivity.this, CustomRecommendationCenterActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.putExtra(VIDEO_URL, videoUrl);
                         intent.putExtra(VIDEO_ID, videoId);

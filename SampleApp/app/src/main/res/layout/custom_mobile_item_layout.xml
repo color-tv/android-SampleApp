@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="400dp"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:ignore="UselessParent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="@color/item_background"
+        android:elevation="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/ctv_videoPreviewContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/ctv_ivVideoThumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:src="@drawable/mask_background_selector" />
+
+            <FrameLayout
+                android:id="@+id/ctv_autoPlayTimerContainer"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="top|left"
+                android:layout_margin="16dp" />
+
+            <ImageView
+                android:id="@+id/ctv_ivAppLogo"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="16dp"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:id="@+id/llTitleDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_margin="24dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/ctv_tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-bold"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/ctv_tvDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ellipsize="end"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:maxLines="4"
+                    android:textColor="@color/yellow"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ctv_llGenres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/black_56"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/ctv_tvGenre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:background="@drawable/genre_background"
+                    android:ellipsize="end"
+                    android:fontFamily="sans-serif-light"
+                    android:maxLines="1"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="2dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/yellow"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

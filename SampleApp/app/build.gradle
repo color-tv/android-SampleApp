@@ -31,10 +31,10 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:leanback-v17:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:leanback-v17:25.3.0'
     compile 'com.google.android.gms:play-services-ads:10.2.0'
     compile 'com.google.android.gms:play-services-location:10.2.0'
     compile 'com.google.android.exoplayer:exoplayer:r2.2.0'
-    compile 'com.colortv:android-sdk:4.0.0'
+    compile 'com.colortv:android-sdk:4.1.0'
 }

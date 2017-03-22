@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">ColorTvSample</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">ColorTv Sample</string>
+    <string name="recommendation_center">Recommendation Center</string>
+    <string name="discovery_center">Discovery Center</string>
+    <string name="app_feature">App Feature</string>
+    <string name="direct_engagement">Direct Engagement</string>
+    <string name="video">Video</string>
 </resources>

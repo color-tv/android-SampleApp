@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:enterFadeDuration="250" android:exitFadeDuration="250">
-    <item android:drawable="@color/black_32" android:state_selected="true" />
+    android:exitFadeDuration="@integer/defaultAnimationTime">
+    <item android:drawable="@color/black_32"
+        android:state_selected="true" />
     <item android:drawable="@color/black_56" />
 </selector>
