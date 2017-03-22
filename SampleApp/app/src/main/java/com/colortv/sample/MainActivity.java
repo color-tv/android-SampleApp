@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 
         @Override
         public void onLoaded(String placement) {
-            adController.load(placement);
+            adController.show(placement);
         }
 
         @Override
@@ -90,7 +90,7 @@ public class MainActivity extends Activity {
                          * CustomRecommendationCenterActivity is a showcase of customizing
                          * Recommendation Center using the ColorTvContentRecommendationConfig
                          */
-                        Intent intent = new Intent(MainActivity.this, CustomRecommendationCenterActivity.class);
+                        Intent intent = new Intent(MainActivity.this, ExoPlayerVideoActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.putExtra(VIDEO_URL, videoUrl);
                         intent.putExtra(VIDEO_ID, videoId);

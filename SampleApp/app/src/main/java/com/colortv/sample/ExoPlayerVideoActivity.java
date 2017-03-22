@@ -12,7 +12,6 @@ import com.colortv.android.api.ColorTvSdk;
 import com.colortv.android.api.controller.ColorTvRecommendationsController;
 import com.colortv.android.api.controller.ColorTvVideoTrackingController;
 import com.colortv.android.api.listener.ColorTvContentRecommendationListener;
-import com.colortv.android.api.storage.ColorTvContentRecommendationConfig.Device;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
@@ -65,6 +64,16 @@ public class ExoPlayerVideoActivity extends Activity {
         @Override
         public void onClosed(String placement) {
             Log.d(TAG, "ContentRecommendation has closed for placement: " + placement);
+        }
+
+        @Override
+        public void onRecommendationCenterClosed(String placement) {
+            Log.d(TAG, "Recommendation Center has closed for placement: " + placement);
+        }
+
+        @Override
+        public void onUpNextClosed(String placement) {
+            Log.d(TAG, "UpNext has closed for placement: " + placement);
         }
 
         @Override

@@ -45,6 +45,16 @@ public class VideoActivity extends Activity {
         }
 
         @Override
+        public void onRecommendationCenterClosed(String placement) {
+            Log.d(TAG, "Recommendation Center has closed for placement: " + placement);
+        }
+
+        @Override
+        public void onUpNextClosed(String placement) {
+            Log.d(TAG, "UpNext has closed for placement: " + placement);
+        }
+
+        @Override
         public void onContentChosen(String videoId, String videoUrl, Map<String, String> videoParams) {
             Intent intent = new Intent(VideoActivity.this, VideoActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
