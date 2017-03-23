@@ -6,16 +6,16 @@ This repository contains a sample application for the ColorTV SDK. It shows diff
 >
 >This tutorial assumes you integrate the SDK by a Gradle Maven dependency. If you'd rather download the `.aar` package, please refer to [this page](https://bintray.com/colortv/maven/android-sdk/view).
 
-##Getting Started
+## Getting Started
 Before getting started make sure you have:
 
 * Added your app in the My Applications section of the Color Dashboard. You need to do this so that you can get your App ID that you'll be adding to your app with our SDK.
 
 * Make sure your Android Studio version is up to date and that your application is targeting `minSdkVersion:14`
 
-##Adding Android TV/Amazon Fire TV SDK
+## Adding Android TV/Amazon Fire TV SDK
 
-###Connecting Your App
+### Connecting Your App
 
 In your project's **build.gradle** make sure you are using ColorTV Bintray repository:
 
@@ -44,7 +44,7 @@ dependencies {
 
 Doing this prevents you from having to download our SDK and adding it manually to your project, as the aar file will handle that for you.
 
-##Initializing the SDK
+## Initializing the SDK
 
 Setup the ColorTvSDK by invoking `ColorTvSdk` initialization method.
 
@@ -58,7 +58,7 @@ Your app id is generated in the publisher dashboard after adding an application 
 >
 >We recommend putting the initialization method inside **MainActivity.onCreate()**. The application must be initialized before invoking any functions of the SDK.
 
-##Declaring Session
+## Declaring Session
 
 Creating a session is **necessary** for tracking user sessions and  virtual currency transactions. Add the following code to every Activity file in your application e.g. `MainActivity.java`
 
@@ -78,7 +78,7 @@ protected void onDestroy() {
 }
 ```
 
-##Placements
+## Placements
 
 Placements are used to optimize user experience and analytics. Below are all predefined placement values used to indicate the specific location of Recommendation Center, UpNext and ads in your app:
 
@@ -106,7 +106,7 @@ Placements are used to optimize user experience and analytics. Below are all pre
 - InsufficientCurrency
 - FinishedTutorial
 
-##Content Recommendations
+## Content Recommendations
 
 >**NOTE**
 >
@@ -114,7 +114,7 @@ Placements are used to optimize user experience and analytics. Below are all pre
 
 In order to control Content Recommendations you need to retrieve **ColorTvRecommendationsController** object by calling `ColorTvSdk.getRecommendationsController()` method. This object is a singleton, which allows loading and showing both **Recommendation Center** and **UpNext**, listening to events or managing assets preloading.
 
-###Registering recommendations listener
+### Registering recommendations listener
 
 To get callbacks about the content recommendation status, you need to create a ColorTvContentRecommendationListener object by implementing it's methods:
 
@@ -163,7 +163,7 @@ recommendationsController.registerListener(recommendationsListener);
 >
 >If you set up `videoUrl` as a deep link, then `onContentChosen` callback is invoked simultaneously to opening new activity with the deep link.
 
-###Loading Content Recommendations
+### Loading Content Recommendations
 
 Before displaying recommendations in either **Recommendation Center** or **UpNext** you need to load recommendations related data from server. In order to do that you can invoke one of following methods:
 
@@ -189,11 +189,11 @@ colorTvRecommendationsController.setPreloadingAssets(false);
 
 It is not a recommended action, however, as the video previews won't be played due to a decrease in performance.
 
-###Showing Content Recommendations
+### Showing Content Recommendations
 
 You can show Content Recommendations in one of two visual forms: **Recommendation Center** and **UpNext**.
 
-####Recommendation Center
+#### Recommendation Center
 
 Recommendation Center is a unit that lets you display recommendations in an Activity with scrollable grid layout form.
 
@@ -205,7 +205,7 @@ colorTvRecommendationsController.showRecommendationCenter(ColorTvPlacements.VIDE
 
 Invoking this method will show Recommendation Center for the placement you pass. You need to call the `load` method for a given placement before invoking `showRecommendationCenter` in order to load recommendations related data. Also make sure you got the `onLoaded` callback first, otherwise the Recommendation Center won't be displayed.
 
-####UpNext
+#### UpNext
 
 UpNext is a unit which diplays only the best recommendation in form of a small view designed to be placed over a video, which up next holds recommendation for. In order to keep the video playing we are delivering UpNext as a Fragment which you need to add to your layout. To make it work properly, you need to add a container to which you'll inject the UpNext fragment. This container have to be inside a RelativeLayout or a FrameLayout with the possibility to use the whole screen size in order to let it place itself in a proper place and size for various devices. The container should also have width set to `match_parent` and height set to `wrap_content`. For a sample of the correct layout, please refer to our [sample application's layout](https://github.com/color-tv/android-SampleApp/blob/master/SampleApp/app/src/main/res/layout/activity_exo.xml). In close future we are going to provide more possibilities to customize the UpNext layout and it's position.
 
@@ -262,7 +262,7 @@ These methods allow you to configure custom behaviour such as clicking **UpNext*
 
 `invokeClick` and `cancel` methods can be safely used when `autoStart` is used with `shouldUseAutoPlay`, although it is not recommended to use `setAutoPlayTimer`, `startAutoPlayTimer` and `stopAutoPlayTimer` in that case, as it may cause some unexpected behaviour.
 
-#####UpNext's specific actions for TVs
+##### UpNext's specific actions for TVs
 
 Android TV requires focus handling and controlling with key events. It is why we've provided following methods:
 
@@ -276,7 +276,7 @@ By default UpNext requests focus when created, but in case of a necessity to cha
 
 There is no need to invoke `dispatchKeyEvent`, as the default behaviour based on focus with usage of `autoStart` works, although you may find it useful in your specific case. You need to add it to your activity's `dispatchKeyEvent` method. It dispatches `KEYCODE_DPAD_CENTER` and `KEYCODE_MEDIA_PLAY_PAUSE` invoking click on **UpNext**, and for other events removes the **UpNext** fragment. It doesn't dispatch `KEYCODE_BACK` and when **UpNext** is destroyed. It dispatches only `ACTION_DOWN` events. It is designed especially for media players that don't work properly on AndroidTv when there is some other view which is focused.
 
-##Video Tracking
+## Video Tracking
 
 >**NOTE**
 >
@@ -284,7 +284,7 @@ There is no need to invoke `dispatchKeyEvent`, as the default behaviour based on
 
 In order to provide additional data for ColorTv Analytics and to improve Content Recommendation, you can report events related to your videos.
 
-###Tracking Events
+### Tracking Events
 
 Below are all the tracking event values predefined in `ColorTvTrackingEventType` class:
 
@@ -326,7 +326,7 @@ videoTrackingController.setVideoIdForPlayerTracking(videoId);
 
 with id of launched video that is set in your feed. In case you are using ColorTv Content Recommendation, the video id will be automatically taken from the chosen recommendation.
 
-##Ads
+## Ads
 
 >**NOTE**
 >
@@ -395,7 +395,7 @@ Calling this method will show an ad for the placement you pass. Make sure you ge
 >
 >It is recommended to set up multiple placements inside your app to maximize monetization and improve user experience.  
 
-##Earning Virtual Currency
+## Earning Virtual Currency
 
 A listener must be added in order to receive events when a virtual currency transaction has occurred.
 
@@ -428,14 +428,14 @@ adController.clearOnCurrencyEarnedListeners();
 >
 >Session must also be implemented for virtual currency transactions to function.
 
-###Currency for user
+### Currency for user
 
 In order to distribute currency to the same user but on other device, use below:
 ```java
 ColorTvSdk.setUserId("user123");
 ```
 
-##INSTALL_REFERRER Conflict
+## INSTALL_REFERRER Conflict
 
 If any of your `BroadcastReceiver` class declared in `AndroidManifest.xml` contains Intent Action `INSTALL_REFERRER`:
 
@@ -462,7 +462,7 @@ if (intent.getAction().equals("com.android.vending.INSTALL_REFERRER")) {
 }
 ```
 
-##User profile
+## User profile
 
 To improve ad targeting you can use the `ColorTvUserProfile` class. To do so, get the reference to this class:
 
@@ -480,7 +480,7 @@ user.setKeywords("sport,health");
 
 These values will automatically be saved and attached to an ad request.
 
-##Disabling voice input on phone fields
+## Disabling voice input on phone fields
 
 If you don't want to use the voice input functionality add the following line to your manifest:
 
@@ -494,7 +494,7 @@ and call the following method after the `ColorTvSdk.init()`:
 ColorTvSdk.setRecordAudioEnabled(false);
 ```
 
-##Summary
+## Summary
 
 After completing all previous steps your Activity could look like this:
 
@@ -605,7 +605,7 @@ public class MainActivity extends Activity {
 }
 ```
 
-##Customizable Recommendation Center
+## Customizable Recommendation Center
 
 If you want to customize `Recommendation Center` we have added `ColorTvRecommendationConfig` (accessible from `ColorTvRecommendationController`) which provides methods that allow you to do it.
 
@@ -616,7 +616,7 @@ Process of designing is no different from the usual layout creation. You can use
 >
 >Once the layout is set, it is stored in the config. If you want to reset the layout to the default one, invoke the resetToDefault() method.
 
-###ColorTvRecommendationConfig
+### ColorTvRecommendationConfig
 
 Available methods
 
@@ -632,7 +632,7 @@ resetToDefault()
 All methods (except for `setSnapEnabled` - only mobile) are applicable for TV, mobile and tablet devices.
 
 
-####setGridLayout(Device device, @LayoutRes int layoutResId)
+#### setGridLayout(Device device, @LayoutRes int layoutResId)
 
 This method is used to set custom grid layout for specified device type. You can add additional images, texts etc. We will handle the following views if they're available:
 
@@ -648,7 +648,7 @@ This method is used to set custom grid layout for specified device type. You can
 >
 >If you are using the default item layout and only want to change the grid layout, the RecyclerView height should be match_parent or defined. If your custom item layout has defined sizes you can use wrap_content.
 
-####setItemLayout(Device device, @LayoutRes int layoutResId)
+#### setItemLayout(Device device, @LayoutRes int layoutResId)
 
 This method is used to set custom item layout for specified device type. You can add additional images, texts etc. All views are animated if they contain selectors with default state and state_selected (works only on TV).
 
@@ -668,24 +668,24 @@ This method is used to set custom item layout for specified device type. You can
 | ctv_tvGenre                | TextView     |                                     | Define how each genre should look like. Visibility must be GONE                   | ALL    |
 | ctv_llGenres               | LinearLayout |                                     | Each ctv_tvGenre will be added here                       | ALL    |
 
-####setRowCount(Device device, int rowCount)
+#### setRowCount(Device device, int rowCount)
 
 This method is used to set the number of rows for specified device type.
 
-####setFont(Device device, Typeface typeface)
+#### setFont(Device device, Typeface typeface)
 
 This method is used to set a custom font for specified device type. It only works if you don't use custom item layout.
 
-####setSnapEnabled(boolean enabled)
+#### setSnapEnabled(boolean enabled)
 
 This method is used to set snapping RecyclerView elements to the center of the screen. Available only on Mobile. We recommend to disable this option if the width of the elements is too small and the first or the last item is impossible to be snapped.
 
 - true - items snap to center of RecyclerView, video preview is enabled and will be shown if available
 - false - list scrolls freely, video preview is disabled and will not be shown whether it is available or not
 
-####resetToDefault()
+#### resetToDefault()
 
 This method is used to reset all settings to default.
 
 
-For an example of the usage all of the above methods, check our [usage of custom recommendation center](https://github.com/color-tv/android-SampleApp/blob/master/SampleApp/app/src/main/java/com/colortv/demo/CustomRecommendationCenterActivity.java)
+For an example of the usage all of the above methods, check our [usage of custom recommendation center](https://github.com/color-tv/android-SampleApp/blob/master/SampleApp/app/src/main/java/com/colortv/sample/CustomRecommendationCenterActivity.java)
