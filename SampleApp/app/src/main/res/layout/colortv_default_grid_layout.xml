@@ -10,11 +10,7 @@
         android:layout_height="472dp"
         android:layout_centerVertical="true"
         android:layout_marginLeft="36dp"
-        android:background="@color/color_tv_discovery_center_white">
-
-        <include layout="@layout/color_tv_featured_unit_layout" />
-
-    </FrameLayout>
+        android:background="@color/color_tv_discovery_center_white" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
