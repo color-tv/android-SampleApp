@@ -607,85 +607,222 @@ public class MainActivity extends Activity {
 
 ## Customizable Recommendation Center
 
-If you want to customize `Recommendation Center` we have added `ColorTvRecommendationConfig` (accessible from `ColorTvRecommendationController`) which provides methods that allow you to do it.
+If you want to customize `Recommendation Center` we have added `ColorTvContentRecommendationConfig` (accessible from `ColorTvRecommendationsController`) which provides methods that allow you to do it.
 
 Layouts containing RecyclerView and items are fully customizable. You can change one, both or use the default.
 Process of designing is no different from the usual layout creation. You can use all types of Views or Layouts, there are no limits.
 
 >**NOTE**
 >
->Once the layout is set, it is stored in the config. If you want to reset the layout to the default one, invoke the resetToDefault() method.
+>Once the layout is set, it is stored in the singleton config. If you want to reset settings to defaults, invoke the resetToDefault() method.
 
-### ColorTvRecommendationConfig
+### ColorTvContentRecommendationConfig
 
-Available methods
+To start customizing recommendation center you have to get `ColorTvContentRecommendationConfig`:
 
 ```java
-setGridLayout(Device device, @LayoutRes int layoutResId)
-setItemLayout(Device device, @LayoutRes int layoutResId)
-setRowCount(Device device, int rowCount)
-setFont(Device device, Typeface typeface)
-setSnapEnabled(boolean enabled)
-resetToDefault()
+ColorTvRecommendationsController recommendationsController = ColorTvSdk.getRecommendationsController();
+ColorTvContentRecommendationConfig recommendationConfig = recommendationsController.getConfig();
 ```
 
-All methods (except for `setSnapEnabled` - only mobile) are applicable for TV, mobile and tablet devices.
+Using the config object, you can access the following methods:
 
+```java
+recommendationConfig.setGridLayout(Device device, @LayoutRes int layoutResId);
+recommendationConfig.setItemLayout(Device device, @LayoutRes int layoutResId);
+recommendationConfig.setRowCount(Device device, int rowCount);
+recommendationConfig.setFont(Device device, Typeface typeface);
+recommendationConfig.setSnapEnabled(boolean enabled);
+recommendationConfig.resetToDefault();
+```
+
+All methods (except for `setSnapEnabled` - only mobile) are applicable to TV, mobile and tablet devices. `Device` enum is nested inside the `ColorTvContentRecommendationConfig` class.
 
 #### setGridLayout(Device device, @LayoutRes int layoutResId)
 
 This method is used to set custom grid layout for specified device type. You can add additional images, texts etc. We will handle the following views if they're available:
 
-| ID                              | View type  | Animation    | Description                                     | Device |
-|---------------------------------|------------|--------------|-------------------------------------------------|--------|
-| ctv_rvGrid                      | RecyclerView |              |                                                 | ALL    |
-| ctv_ivFavoriteContainer         | Any layout | Visibility.VISIBLE and scale | Appears on play/pause button click if available | ALL    |
-| ctv_featuredUnitLayoutContainer | Any layout |              | Used to inject featured content if available    | TV     |
-| ctv_ivGridClose                 | ImageView  | Scale        |                                                 | TV     |
-| ctv_layoutSubscriptionFragment  | Any layout |              | Discovery center only                           | TV     |
+<details><summary>Available IDs</summary>
+
+
+#### **ID:** ctv_rvGrid
+* **View type:** `android.support.v7.widget.RecyclerView`
+* **Description:** Contains recommendation items.
+* **Device:** ALL
+<br /><br />
+
+
+#### **ID:** ctv_ivFavoriteContainer
+* **View type:** Any view extending the View class (eg. `LinearLayout`, `ImageView`).
+* **Description:** Appears when user presses the play-pause remote button on TV or taps on `ImageView` with id `ctv_ivFavoriteIcon` on Mobile/Tablet if available.
+* **Animation:** Is displayed and scales up for 1 second.
+* **Device:** ALL
+![Favorite button click](images/favorite_button_click_android.gif)
+
+
+#### **ID:** ctv_featuredUnitLayoutContainer
+* **View type:** Any view extending the View class (eg. `LinearLayout`, `ImageView`), `FrameLayout` is recommended.
+* **Description:** Used to inject featured content if available. It is not recommended to add any child views.
+* **Device:** TV
+![Featured button](images/featured_android.gif)
+
+
+#### **ID:** ctv_ivGridClose
+* **View type:** `ImageView`
+* **Description:** Used to close the recommendation center.
+* **Animation:** Scales up on focus, scales down on unfocus.
+* **Device:** TV
+<br /><br />
+
+
+#### **ID:** ctv_layoutSubscriptionFragment
+* **View type:** Any view extending the View class (eg. `LinearLayout`, `ImageView`), `FrameLayout` recommended
+* **Description:** Subscription fragment is injected into this view. It is an overlay view, which appears when user clicks on an element containing a subscription offer and allows user to type phone no./email address and subscribe. We do not recommend to add any child views.
+* **Device:** TV
 
 >**NOTE**
 >
 >If you are using the default item layout and only want to change the grid layout, the RecyclerView height should be match_parent or defined. If your custom item layout has defined sizes you can use wrap_content.
 
+</details>
+
+Check the default TV [grid layout](https://github.com/color-tv/android-SampleApp/blob/master/SampleApp/app/src/main/res/layout/colortv_default_grid_layout.xml) for better a understanding of the customization options.
+
 #### setItemLayout(Device device, @LayoutRes int layoutResId)
 
-This method is used to set custom item layout for specified device type. You can add additional images, texts etc. All views are animated if they contain selectors with default state and state_selected (works only on TV).
+This method is used to set a custom item layout for specified device type. You can add additional images, texts etc. All views are animated if they contain selectors with the default state and state_selected (TV only).
 
-| ID                         | VIEW TYPE    | ANIMATION (on focus)                | DESCRIPTION                                               | DEVICE |
-|----------------------------|--------------|-------------------------------------|-----------------------------------------------------------|--------|
-| ctv_hide                   | Any layout   | Visibility.GONE                     | Everything inside is hidden on focus                           | ALL    |
-| ctv_show                   | Any layout   | Visibility.VISIBLE                  | Everything inside is shown on focus                           | ALL    |
-| ctv_autoPlayTimerContainer | Any layout   |                                     | Used to inject countdown timer to autoplay the first recommended video    | ALL    |
-| ctv_videoPreviewContainer  | Any layout   |                                     | Play video preview. Automatically hides thumbnail on focus | ALL    |
-| ctv_ivVideoThumbnail       | ImageView    | Visibility.GONE                     | Display video thumbnail                                   | ALL    |
-| ctv_ivAppLogo              | ImageView    |                                     | Display logo                                              | ALL    |
-| ctv_ivPlayButton           | ImageView    | Visibility.GONE (on mobile - scale) |                                                           | ALL    |
-| ctv_ivBlackMask            | ImageView    | Visibility.GONE (on mobile - fade)  |                                                           | ALL    |
-| ctv_tvTitle                | TextView     |                                     | Display title                                             | ALL    |
-| ctv_tvDescription          | TextView     |                                     | Display description                                       | ALL    |
-| ctv_tvDuration             | TextView     |                                     | Display duration                                          | ALL    |
-| ctv_tvGenre                | TextView     |                                     | Define how each genre should look like. Visibility must be GONE                   | ALL    |
-| ctv_llGenres               | LinearLayout |                                     | Each ctv_tvGenre will be added here                       | ALL    |
+All the views available are outlined on the following image:
+
+![Content recommendation item](images/content_recommendation_showcase.png)
+
+<details><summary>Available IDs</summary>
+
+
+#### **ID:** ctv_hide
+* **View type:** Any view extending the View class (eg. `LinearLayout`, `ImageView`)
+* **Description:** Used to hide views on focus and show them on unfocus. Use any layout if you would like to hide more than one view.
+* **Animation:** Hides (`Visibility.GONE`) the view and its child views on focus and shows them on unfocus.
+* **Device:** TV
+<br /><br />
+
+
+#### **ID:** ctv_show
+* **View type:** Any view extending the View class (eg. `LinearLayout`, `ImageView`)
+* **Description:** Used to show views on focus and hide them on unfocus. Use any Layout if you would like to show more than one view.
+* **Animation:** Shows (`Visibility.VISIBLE`) the view and its child views on focus and hides them on unfocus.
+* **Device:** TV
+<br /><br />
+
+
+#### **ID:** ctv_autoPlayTimerContainer
+* **View type:** `FrameLayout`
+* **Description:** Used to inject countdown timer to automatically start playing the first recommended video
+* **Animation:** Hides on any interaction on items list or when timer reaches 0.
+* **Device:** ALL
+<br /><br />
+
+
+#### **ID:** ctv_videoPreviewContainer
+* **View type:** Any view extending the ViewGroup class (eg. `LinearLayout`, `RelativeLayout`)
+* **Description:** Used to inject our `VideoPlayer` for previews playback. Check our [custom layout](https://github.com/color-tv/android-SampleApp/blob/master/SampleApp/app/src/main/res/layout/custom_item_layout_2.xml) if you would like to oversize the preview video.
+* **Animation:** Plays the preview and hides the thumbnail on focus (only if the preview is available) and stops playing the preview and shows the thumbnail on unfocus.
+* **Device:** ALL
+<br /><br />
+
+
+#### **ID:** ctv_ivVideoThumbnail
+* **View type:** `ImageView`
+* **Description:** Used to display the video thumbnail.
+* **Animation:** If there is preview available and `ctv_videoPreviewContainer` is present in the layout it hides on focus and shows on unfocus
+* **Device:** ALL
+<br /><br />
+
+
+#### **ID:** ctv_ivAppLogo
+* **View type:** `ImageView`
+* **Description:** Used to display your app's logo.
+* **Device:** ALL
+<br /><br />
+
+
+#### **ID:** ctv_ivPlayButton
+* **View type:** `ImageView`
+* **Description** Used to point out that focusing an element will cause playing a preview.
+* **Animation:** Hides on focus and shows on unfocus.
+* **Device:** ALL
+<br /><br />
+
+
+#### **ID:** ctv_ivBlackMask
+* **View type:** `ImageView`
+* **Description** Used to cover unfocused thumbnail images with semi transparent mask to highlight the focused item.
+* **Animation:** Hides on focus and shows on unfocus.
+* **Device:** ALL
+<br /><br />
+
+
+#### **ID:** ctv_tvTitle
+* **View type:** `TextView`
+* **Description:** Displays the video title.
+* **Device:** ALL
+<br /><br />
+
+
+#### **ID:** ctv_tvDescription
+* **View type:** `TextView`
+* **Description:** Displays the video description.
+* **Device:** ALL
+<br /><br />
+
+
+#### **ID:** ctv_tvDuration
+* **View type:** `TextView`
+* **Description:** Displays the video duration.
+* **Device:** ALL
+<br /><br />
+
+
+#### **ID:** ctv_tvGenre
+* **View type:** `TextView`
+* **Description:** Defines how each genre should look like. Visibility must be set to `Visibility.GONE`.
+* **Device:** ALL
+<br /><br />
+
+
+#### **ID:** ctv_llGenres
+* **View type:** `LinearLayout`
+* **Description:** Used to contain genres, which will look like the `TextView` with id `ctv_tvGenre`.
+* **Device:** ALL
+<br /><br />
+
+
+#### **ID:** ctv_ivFavoriteIcon
+* **View type:** `ImageView`
+* **Description:** Shows `ctv_ivFavoriteContainer` on click.
+* **Device:** MOBILE
+
+</details>
+
+Check our example [item layouts](https://github.com/color-tv/android-SampleApp/tree/master/SampleApp/app/src/main/res/layout) for better a understanding of the customization options.
 
 #### setRowCount(Device device, int rowCount)
 
-This method is used to set the number of rows for specified device type.
+This method is used to set the number of rows in RecyclerView with id `ctv_rvGrid` for a specified device type.
 
 #### setFont(Device device, Typeface typeface)
 
-This method is used to set a custom font for specified device type. It only works if you don't use custom item layout.
+This method is used to set a custom font for a specified device type. It only works if you don't use a custom item layout.
 
 #### setSnapEnabled(boolean enabled)
 
-This method is used to set snapping RecyclerView elements to the center of the screen. Available only on Mobile. We recommend to disable this option if the width of the elements is too small and the first or the last item is impossible to be snapped.
+This method is used to set snapping `RecyclerView` elements to the center of the screen. Available only on Mobile. We recommend to disable this option if the width of the elements is too small and the first or the last item is impossible to be snapped.
 
-- true - items snap to center of RecyclerView, video preview is enabled and will be shown if available
-- false - list scrolls freely, video preview is disabled and will not be shown whether it is available or not
+- true - items snap to the center of the `RecyclerView`, video preview is enabled and will be shown if available.
+- false - list scrolls freely, video preview is disabled and will not be shown whether it is available or not.
 
 #### resetToDefault()
 
-This method is used to reset all settings to default.
+This method is used to reset all settings to defaults.
 
-
-For an example of the usage all of the above methods, check our [usage of custom recommendation center](https://github.com/color-tv/android-SampleApp/blob/master/SampleApp/app/src/main/java/com/colortv/sample/CustomRecommendationCenterActivity.java)
+For an example of the usage of all of the above methods, check our [custom recommendation center sample](https://github.com/color-tv/android-SampleApp/blob/master/SampleApp/app/src/main/java/com/colortv/sample/CustomRecommendationCenterActivity.java).
